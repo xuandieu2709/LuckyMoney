@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Kích thước đường phân chia mặc định -->
+    <dimen name="line_size">@dimen/dp_1</dimen>
+
+    <!-- Kích thước góc tròn của nút mặc định -->
+    <dimen name="button_circle_size">999dp</dimen>
+
+    <!-- Hộp thoại chung kích thước góc làm tròn -->
+    <dimen name="dialog_ui_round_size">@dimen/dp_16</dimen>
+
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/tvBgTag"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_blue_transparent">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="5dp"
+                android:textSize="10dp"
+                android:text="999"
+                android:textColor="@android:color/white"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/tvContentTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="5dp"
+                android:textSize="10dp"
+                android:text="999"
+                android:textColor="@android:color/white"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

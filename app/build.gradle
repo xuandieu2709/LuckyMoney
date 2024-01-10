@@ -1,0 +1,224 @@
+apply plugin: 'com.android.application'
+apply from: '../common.gradle'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
+// Apply the Crashlytics Gradle plugin
+apply plugin: 'com.google.firebase.crashlytics'
+android {
+
+    defaultConfig {
+        applicationId 'vn.xdeuhug.LuckyMoney'
+    }
+
+//    signingConfigs {
+//        config {
+//
+//            storeFile file('../cerfiticates/keystorenew')
+//
+//            storePassword 'techres'
+//            keyAlias = 'techres'
+//            keyPassword 'techres'
+//        }
+//    }
+
+    buildTypes {
+        debug {
+            // thêm hậu tố vào tên gói
+            //applicationIdSuffix '.debug'
+            // chế độ gỡ lỗi
+            debuggable true
+            jniDebuggable true
+            // Loại bỏ các tài nguyên vô dụng
+            shrinkResources false
+            // xáo trộn mã
+            minifyEnabled false
+            // Cấu hình thông tin
+//            signingConfig signingConfigs.config
+
+            addManifestPlaceholders(['app_name': 'Lì xì đầu năm'])
+
+            proguardFiles 'proguard-sdk.pro', 'proguard-app.pro'
+        }
+
+        preview.initWith(debug)
+
+        preview {
+//            applicationIdSuffix '.stagging'
+            addManifestPlaceholders(['app_name': 'Lì xì đầu năm Preview'])
+        }
+
+        release {
+            // chế độ gỡ lỗi
+            debuggable false
+            jniDebuggable false
+            // Loại bỏ các tài nguyên vô dụng
+            shrinkResources false
+            // xáo trộn mã
+            minifyEnabled false
+            // Cấu hình thông tin
+//            signingConfig signingConfigs.config
+
+            addManifestPlaceholders(['app_name': '@string/app_name'])
+
+            proguardFiles 'proguard-sdk.pro', 'proguard-app.pro'
+        }
+    }
+
+    applicationVariants.configureEach { variant ->
+        // apk cấu hình tên tệp đầu ra
+        variant.outputs.configureEach { output ->
+            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
+            if (variant.buildType.name == buildTypes.release.getName()) {
+                outputFileName += '_' + new Date().format('MMdd')
+            }
+            outputFileName += '.apk'
+        }
+    }
+
+    //Generate Dynamic Feature
+    bundle {
+        //Generate APKs for devices with different screen densities//
+        density {
+            enableSplit false
+        }
+        //Generate APKs for devices with different CPU architectures//
+        abi {
+            enableSplit false
+            //Create a split APK for each language//
+        }
+        language {
+            enableSplit true
+        }
+    }
+
+    //View Binding
+    buildFeatures {
+        viewBinding true
+        //noinspection DataBindingWithoutKapt
+        dataBinding true
+    }
+
+
+    dynamicFeatures = [
+
+
+    ]
+
+    packagingOptions {
+        jniLibs.pickFirsts.add("lib/**/libc++_shared.so")
+    }
+}
+
+configurations {
+    configureEach {
+        //noinspection DuplicatePlatformClasses
+        exclude group: 'org.json', module: 'json'
+    }
+
+    configureEach {
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel-ktx'
+    }
+}
+
+dependencies {
+    // Thư viện cơ sở
+    api project(':library:base')
+    api project(':library:widget')
+    api project(':library:selector')
+    api project(':library:luckyWheel')
+
+    api 'com.github.getActivity:EasyHttp:12.5'
+    //noinspection GradleDependency
+    api 'com.squareup.okhttp3:okhttp:3.12.13'
+
+    // https://github.com/getActivity/TitleBar
+    api 'com.github.getActivity:TitleBar:9.2'
+
+    // Json：https://github.com/google/gson
+    api 'com.google.code.gson:gson:2.9.0'
+
+    // Gson：https://github.com/getActivity/GsonFactory
+    api 'com.github.getActivity:GsonFactory:6.2'
+
+    // Shape：https://github.com/getActivity/ShapeView
+    api 'com.github.getActivity:ShapeView:6.0'
+
+    // https://github.com/bumptech/glide
+    // https://github.com/Muyangmin/glide-docs-cn
+    api 'com.github.bumptech.glide:glide:4.14.2'
+
+    // https://github.com/gyf-dev/ImmersionBar
+    api 'com.gyf.immersionbar:immersionbar:3.0.0'
+
+    // https://github.com/airbnb/lottie-android
+    // https://lottiefiles.com、https://icons8.com/animated-icons
+    api 'com.airbnb.android:lottie:5.2.0'
+
+    //https://github.com/scwang90/SmartRefreshLayout
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.3'
+    api 'com.scwang.smart:refresh-header-material:2.0.3'
+
+    //https://github.com/JakeWharton/timber
+    api 'com.jakewharton.timber:timber:5.0.1'
+
+    // MMKV：https://github.com/Tencent/MMKV
+    api 'com.tencent:mmkv-static:1.2.14'
+
+    //link:https://github.com/AndreiD/TSnackBar
+    api 'com.androidadvance:topsnackbar:1.1.1'
+
+    //link:https://github.com/facebook/shimmer-android
+    api 'com.facebook.shimmer:shimmer:0.5.0@aar'
+
+    //https://github.com/kyleduo/SwitchButton
+    api 'com.kyleduo.switchbutton:library:2.1.0'
+
+    //https://github.com/socketio/socket.io-client-java
+    api 'io.socket:socket.io-client:2.0.1'
+
+    //https://github.com/hdodenhof/CircleImageView
+    api 'de.hdodenhof:circleimageview:3.1.0'
+
+    //https://github.com/MarkoMilos/Paginate
+    api 'com.github.markomilos:paginate:1.0.0'
+
+    //flexbox layout
+    api 'com.google.android.flexbox:flexbox:3.0.0'
+
+    //MPChart
+    api 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
+    api 'me.dm7.barcodescanner:zxing:1.9.13'
+    //https://github.com/gotev/android-upload-service
+    api 'net.gotev:uploadservice:4.7.0'
+
+    //MPChart
+    api 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    api 'com.github.captain-miao:optroundcardview:1.0.0'
+
+    api 'androidx.biometric:biometric:1.2.0-alpha05'
+
+    api 'pub.devrel:easypermissions:3.0.0'
+
+    api "com.daimajia.swipelayout:library:1.2.0@aar"
+    api 'com.wdullaer:materialdatetimepicker:4.2.3'
+    api 'com.whiteelephant:monthandyearpicker:1.3.0'
+    implementation 'com.r0adkll:slidableactivity:2.1.0'
+
+
+    api 'im.ene.kohii:kohii-core:1.4.0.2017001'
+    api 'im.ene.kohii:kohii-exoplayer:1.4.0.2017001'
+    api 'com.google.android.exoplayer:exoplayer:2.17.1'
+//    api 'cn.jzvd:jiaozivideoplayer:6.2.10'
+    api 'cn.jzvd:jiaozivideoplayer:7.7.0'
+    api 'org.jsoup:jsoup:1.15.3'
+    api 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.0.0'
+
+    //Load Image with COIL: https://github.com/coil-kt/coil/issues?q=reload
+    api 'io.coil-kt:coil:2.3.0'
+    //Load Video with COIL https://coil-kt.github.io/coil/videos/
+    api 'io.coil-kt:coil-video:2.3.0'
+}

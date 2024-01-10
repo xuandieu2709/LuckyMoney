@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply from: '../../common.gradle'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+android {
+
+    defaultConfig {
+        // Cấu hình làm xáo trộn mô-đun
+        consumerProguardFiles 'proguard-base.pro'
+    }
+
+
+    sourceSets {
+        main {
+            // res Cấu hình thư mục tài nguyên
+            res.srcDirs(
+                    'src/main/res',
+                    'src/main/res-sw',
+            )
+        }
+    }
+}
+
+dependencies {
+    api 'com.github.getActivity:ToastUtils:10.5'
+    api 'org.greenrobot:eventbus:3.2.0'
+    api 'org.simple:androideventbus:1.0.5.1'
+    implementation 'androidx.core:core-ktx:+'
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- is Selected -->
+    <item android:color="@color/blue_700" android:state_selected="true" />
+    <!-- is not Selected -->
+    <item android:color="@color/white" android:state_selected="false" />
+    <!-- is Enable -->
+    <item android:color="@color/blue_700" android:state_enabled="true" />
+    <!-- is not Enable -->
+    <item android:color="@color/white" android:state_enabled="false" />
+    <!-- is normal-->
+    <item android:color="@color/blue_700" />
+</selector>

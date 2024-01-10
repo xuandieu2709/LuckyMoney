@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="@dimen/dp_10"
+        tools:context=".ui.adapter.TabAdapter">
+
+        <com.hjq.shape.view.ShapeTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:paddingVertical="@dimen/dp_12"
+            app:shape_textColor="@color/black25"
+            app:shape_textSelectedColor="@color/common_accent_color"
+            tools:text="title"
+            tools:textSize="@dimen/sp_14" />
+
+        <com.hjq.shape.view.ShapeView
+            android:id="@+id/vSliding"
+            android:layout_width="@dimen/dp_5"
+            android:layout_height="@dimen/dp_5"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/dp_5"
+            app:shape="oval"
+            app:shape_solidColor="@color/common_accent_color" />
+
+    </FrameLayout>
+</layout>

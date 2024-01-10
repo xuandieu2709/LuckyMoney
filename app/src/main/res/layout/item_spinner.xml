@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<vn.xdeuhug.luckyMoney.widget.AppTextView
+    android:id ="@+id/text1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/sp_12"
+    android:gravity="left"
+    android:textColor="@color/black"
+    android:padding="@dimen/dp_8"
+    />

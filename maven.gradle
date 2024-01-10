@@ -1,0 +1,12 @@
+static def addCommonMaven(RepositoryHandler handler) {
+    handler.maven { url 'https://maven.aliyun.com/repository/public' }
+    handler.maven { url 'https://jitpack.io' }
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.mavenCentral()
+    handler.google()
+
+
+//        url = uri("https://repositories.tomtom.com/artifactory/maven")
+}
+
+ext.addCommonMaven = this.&addCommonMaven

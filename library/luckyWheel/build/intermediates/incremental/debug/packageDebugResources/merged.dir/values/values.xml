@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lucky Wheel Library</string>
+    <declare-styleable name="LuckyWheelView">
+        <attr format="color" name="lkwBackgroundColor"/>
+        <attr format="reference" name="lkwCursor"/>
+        <attr format="reference" name="lkwCenterImage"/>
+        <attr format="color" name="lkwEdgeColor"/>
+        <attr format="integer" name="lkwEdgeWidth"/>
+        <attr format="color" name="lkwTopTextColor"/>
+        <attr format="dimension" name="lkwTopTextPadding"/>
+        <attr format="dimension" name="lkwTopTextSize"/>
+        <attr format="dimension" name="lkwSecondaryTextSize"/>
+    </declare-styleable>
+    <declare-styleable name="MyTextView">
+        <attr format="reference" name="font"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border_dialog"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <vn.xdeuhug.luckyMoney.widget.AppTextViewBold
+                android:id="@+id/tvHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_50"
+                android:gravity="center"
+                android:paddingVertical="@dimen/dp_8"
+                android:textAllCaps="true"
+                android:text="@string/notification"
+                android:textColor="@color/text_color_blue"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <vn.xdeuhug.luckyMoney.widget.AppTextView
+                    android:id="@+id/tvContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_32"
+                    android:layout_marginVertical="@dimen/dp_16"
+                    android:gravity="center"
+                    android:textColor="@color/gray_900"
+                    android:textSize="@dimen/sp_16"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_40"
+                android:layout_marginVertical="@dimen/dp_10"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <vn.xdeuhug.luckyMoney.widget.AppButtonBold
+                    android:id="@+id/btnConfirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_border_status"
+                    android:backgroundTint="@color/main_bg"
+                    android:elevation="0dp"
+                    android:gravity="center"
+                    android:paddingVertical="@dimen/dp_4"
+                    android:text="@string/confirm"
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_color_blue"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

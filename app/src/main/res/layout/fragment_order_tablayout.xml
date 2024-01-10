@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.administration.OrderTabLayoutFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/gray_200"/>
+
+        <LinearLayout
+            android:id="@+id/llTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:layout_marginHorizontal="@dimen/dp_16">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tlTab"
+                app:tabBackground="@drawable/bg_white_all_state"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                app:tabGravity="fill"
+                app:tabIndicator="@drawable/bg_radius_blue_700_top_left_top_right"
+                app:tabIndicatorHeight="@dimen/dp_2"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorColor="@color/transparent"
+                app:tabMaxWidth="0dp"
+                app:tabPaddingTop="@dimen/dp_8"
+                app:tabPaddingBottom="@dimen/dp_8"
+                app:tabMode="scrollable"
+                app:tabPadding="@dimen/dp_4"
+                app:tabSelectedTextColor="@color/blue_700"
+                app:tabTextAppearance="@style/TextTabOrder"
+                app:tabTextColor="@color/gray_600" />
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2Content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue_600"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+    </LinearLayout>
+
+</FrameLayout>

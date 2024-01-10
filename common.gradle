@@ -1,0 +1,153 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+// Cấu hình chung
+android {
+
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionName rootProject.ext.android["versionName"]
+        versionCode rootProject.ext.android["versionCode"]
+
+        buildConfigField('boolean', 'LOG_ENABLE', '' + LOG_ENABLE + '')
+        buildConfigField('String', 'HOST_URL', '"' + HOST_URL + '"')
+        buildConfigField('String', 'PROJECT_ID', '"' + PROJECT_ID + '"')
+
+        //Port server
+        buildConfigField('int', 'PROJECT_ID_OAUTH', '' + PROJECT_ID_OAUTH + '')
+        buildConfigField('int', 'PROJECT_ID_NODE_REPORT', '' + PROJECT_ID_NODE_REPORT + '')
+        buildConfigField('int', 'PROJECT_ID_APPLICATION', '' + PROJECT_ID_APPLICATION + '')
+        buildConfigField('int', 'PROJECT_ID_UPLOAD', '' + PROJECT_ID_UPLOAD + '')
+        buildConfigField('int', 'PROJECT_ID_SUPPLIER', '' + PROJECT_ID_SUPPLIER + '')
+
+        // Chỉ giữ lại tài nguyên hình ảnh xxhdpi (hiện tại độ phân giải chính là 1920 * 1080)
+        resConfigs 'xxhdpi'
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', ''
+        }
+
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        proguardFiles 'proguard-sdk.pro', 'proguard-app.pro'
+    }
+
+    // Java JDK 8
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    // Bộ nhớ thư mục của các tập tin
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildTypes {
+        // bản debug
+        debug {}
+        // bản beta
+        preview {}
+        // bản live
+        release {}
+    }
+
+    // Cấu hình cảnh báo mã
+    lintOptions {
+        // Tắt cảnh báo mã cứng văn bản
+        disable 'HardcodedText'
+        // Tắt cảnh báo mô tả hình ảnh
+        disable 'ContentDescription'
+    }
+
+    packagingOptions {
+        // Xóa tất cả các tệp trong gói này (thông tin chữ ký sẽ không bị xóa)
+        exclude 'META-INF/*******'
+    }
+
+    android {
+        packagingOptions {
+            exclude 'META-INF/NOTICE'
+            exclude 'META-INF/LICENSE'
+        }
+    }
+
+    // This is handled for you by the 2.0+ Gradle Plugin
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
+    }
+
+}
+
+afterEvaluate {
+    if (android.defaultConfig.applicationId == null) {
+        generateReleaseBuildConfig.enabled = false
+        generatePreviewBuildConfig.enabled = false
+        generateDebugBuildConfig.enabled = false
+    }
+}
+
+dependencies {
+    // Nhận tất cả thư viện đuôi jar, aar từ libs
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
+
+    //test
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+
+    // AndroidX：https://github.com/androidx/androidx
+    api 'androidx.appcompat:appcompat:1.6.1'
+    api "androidx.recyclerview:recyclerview:1.3.0"
+    implementation 'androidx.annotation:annotation:1.6.0'
+    api 'androidx.navigation:navigation-fragment:2.5.3'
+    api "androidx.constraintlayout:constraintlayout:2.1.4"
+    api 'com.google.android.material:material:1.7.0'
+    api 'androidx.core:core-ktx:1.10.1'
+
+
+    // Kotlin：https://github.com/Kotlin/kotlinx.coroutines
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+
+    //Firebase
+    api platform("com.google.firebase:firebase-bom:32.0.0")
+    api platform("com.google.firebase:firebase-perf")
+    api "com.google.firebase:firebase-messaging"
+    api "com.google.firebase:firebase-analytics"
+    api "com.google.firebase:firebase-auth:22.0.0"
+    api "com.google.firebase:firebase-database"
+    api "com.google.firebase:firebase-messaging-directboot:23.1.2"
+    api 'com.google.firebase:firebase-appcheck:17.0.0'
+
+
+    //Google
+    implementation "com.google.android.gms:play-services-vision:20.1.3"
+    implementation "com.google.android.play:core:1.10.3"
+    implementation "com.google.android.gms:play-services-location:21.0.1"
+    implementation "com.google.android.gms:play-services-tasks:18.0.2@aar"
+    implementation 'com.google.android.play:core:1.10.3'
+
+    api 'com.google.android.gms:play-services-location:21.0.1'
+    api 'com.google.android.gms:play-services-maps:18.1.0'
+
+    // RxJava libraries
+    api 'io.reactivex:rxandroid:1.2.1'
+    api 'io.reactivex:rxjava:1.3.4'
+    api 'io.reactivex.rxjava2:rxjava:2.2.18'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    api "org.jetbrains.anko:anko:0.10.8"
+    api "com.github.chuckerteam.chucker:library:3.5.2"
+}

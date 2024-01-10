@@ -1,0 +1,8 @@
+apply plugin: 'com.android.library'
+apply from: '../../common.gradle'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+dependencies {
+    implementation project(':library:base')
+    implementation 'androidx.core:core-ktx:+'
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="min_length_8">Độ dài tối thiểu 8 ký tự</string>
+    <string name="length_10_max">Độ dài tối đa 10 ký tự</string>
+</resources>

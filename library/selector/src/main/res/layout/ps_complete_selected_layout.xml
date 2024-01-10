@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.luck.picture.lib.widget.MediumBoldTextView
+        android:id="@+id/ps_tv_select_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/ps_num_oval"
+        android:gravity="center"
+        android:textColor="@color/ps_color_white"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+    <com.luck.picture.lib.widget.MediumBoldTextView
+        android:id="@+id/ps_tv_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="@string/ps_please_select"
+        android:textColor="@color/ps_color_9b"
+        android:textSize="14sp" />
+
+</merge>

@@ -1,0 +1,53 @@
+apply from: 'configs.gradle'
+
+buildscript {
+    apply from: 'maven.gradle'
+
+    //Kotlin
+    ext.coroutines = "1.4.1"
+    ext.lifecycle_version = "2.2.0"
+    ext.kotlin_version = '1.8.0'
+
+    repositories {
+        addCommonMaven(repositories)
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+        classpath 'com.google.gms:google-services:4.3.15'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.5'
+        classpath 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1'
+    }
+}
+
+allprojects {
+    repositories {
+        addCommonMaven(repositories)
+        mavenCentral()
+        /*maven {
+            credentials{
+                username = 'xuandieu12300@gmail.com'
+                password = 'Xuandieu123@'
+            }
+            url = uri("https://repositories.tomtom.com/artifactory/maven")
+        }*/
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+    tasks.withType(Javadoc).configureEach {
+        options {
+            encoding 'UTF-8'
+            charSet 'UTF-8'
+            links 'http://docs.oracle.com/javase/7/docs/api'
+        }
+    }
+
+    setBuildDir(new File(rootDir, "build/${path.replaceAll(':', '/')}"))
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}

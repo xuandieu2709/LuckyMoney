@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Áp dụng các kiểu chủ đề -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- màu nền cửa sổ -->
+        <item name="android:windowBackground">@color/common_window_background_color</item>
+        <!-- Màu chính của ứng dụng, được Thanh công cụ ActionBar sử dụng theo mặc định -->
+        <item name="colorPrimary">@color/common_primary_color</item>
+        <!-- Màu tối chính của ứng dụng, được sử dụng theo mặc định cho thanh trạng thái -->
+        <item name="colorPrimaryDark">@color/common_primary_dark_color</item>
+        <!-- Màu nhấn của ứng dụng, màu này được sử dụng theo mặc định cho hiệu ứng lựa chọn của các điều khiển chung, chẳng hạn như CheckBox RadioButton Switch -->
+        <item name="colorAccent">@color/common_accent_color</item>
+        <!-- Màu văn bản mặc định, Nút, Màu văn bản TextView -->
+        <item name="android:textColor">@color/common_text_color</item>
+        <!-- Kích thước phông chữ mặc định, kích thước phông chữ của Nút, TextView -->
+        <item name="android:textSize">@dimen/sp_14</item>
+        <!-- Màu lời nhắc mặc định, màu văn bản lời nhắc của Nút và Chế độ xem văn bản -->
+        <item name="android:textColorHint">@color/common_text_hint_color</item>
+        <!-- ActionMode ghi đè Thanh hành động không được đặt xuống dưới -->
+        <item name="windowActionModeOverlay">true</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- Màu ActionMode -->
+        <item name="actionModeBackground">@color/common_primary_color</item>
+        <!-- Giải quyết vấn đề chuỗi tiếng Anh của Nút của Android 5.1 trở lên tự động là chữ hoa -->
+        <item name="android:textAllCaps">false</item>
+        <!-- Giải quyết vấn đề ImageView không thể tự động kéo giãn hình ảnh theo tỷ lệ -->
+        <!--        <item name="android:adjustViewBounds">true</item>-->
+        <!-- Phương thức nhập liệu bị ẩn theo mặc định. Bật tùy chọn này sẽ khiến hộp thoại nhập liệu không đóng bàn phím mềm sau khi đóng. -->
+        <!--        <item name="android:windowSoftInputMode">stateHidden</item>-->
+        <!-- Tắt hiệu ứng gợn nước của RecyclerView NestedScrollView ViewPager -->
+        <item name="android:overScrollMode">never</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!-- Tắt khoảng cách văn bản đi kèm với TextView -->
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:statusBarColor">@color/main_bg</item>
+    </style>
+
+    <!-- Phong cách chủ đề trang Splash -->
+    <style name="SplashTheme" parent="AppTheme">
+        <!-- https://www.jianshu.com/p/d0d907754603 -->
+
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+<!--        <item name="android:windowBackground">@drawable/splash_background</item>-->
+    </style>
+
+    <!-- Kiểu nút mặc định -->
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:paddingStart">@dimen/dp_20</item>
+        <item name="android:paddingEnd">@dimen/dp_20</item>
+        <item name="android:paddingTop">@dimen/dp_10</item>
+        <item name="android:paddingBottom">@dimen/dp_10</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@drawable/button_blue_text_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/button_blue_selector</item>
+        <item name="android:foreground">@null</item>
+    </style>
+
+    <style name="FullScreenTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="SearchView">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:queryHint">@color/gray_500</item>
+        <item name="android:editTextColor">@color/gray_900</item>
+        <item name="android:textColorHint">@color/gray_500</item>
+        <item name="title">@string/search</item>
+        <item name="titleColor">@color/gray_500</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="ImageButtonStyleCustom">
+        <item name="android:scaleType">center</item>
+        <item name="android:layout_gravity">end|center_vertical|center_horizontal|center</item>
+    </style>
+
+    <style name="ProgressBarCircleNormal">
+        <item name="android:indeterminateDrawable">@drawable/progress_material</item>
+    </style>
+
+    <!--    //SheetDialog-->
+    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <!--    Hiển thị dialog-->
+    <style name="BottomSheetTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@color/transparent_black</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+    <!-- Kiểu hộp văn bản mặc định -->
+    <style name="EditTextStyle">
+        <item name="android:background">@null</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColorHint">#A4A4A4</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:paddingTop">@dimen/dp_10</item>
+        <item name="android:paddingBottom">@dimen/dp_10</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:paddingStart">@dimen/dp_16</item>
+        <item name="android:paddingEnd">@dimen/dp_16</item>
+        <item name="android:inputType">text</item>
+    </style>
+    <style name="ValueDateVN">
+        <item name="android:inputType">text</item>
+        <item name="android:digits">_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựđ</item>
+    </style>
+    <style name="ValueDateSpecialCharacters">
+        <item name="android:inputType">text</item>
+        <item name="android:digits">_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&amp;*?/\+-|</item>
+    </style>
+    <!--chu chay-->
+    <style name="AutoTextView">
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="SpinnerDropDownStyle" parent="Widget.AppCompat.Spinner.DropDown">
+        <item name="android:overlapAnchor">false</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:dropDownVerticalOffset">@dimen/dp_8</item>
+    </style>
+
+
+    <style name="TextViewNumberDark" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_color_blue</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">@dimen/dp_4</item>
+        <item name="android:paddingBottom">@dimen/dp_4</item>
+    </style>
+
+    <style name="BottomTabTextStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textStyle">bold</item>
+        <item name="singleLine">true</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="MyRadioButtonBlueCircle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/bg_radio_button_circle_background_blue</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="MyRadioButtonBlueSquare" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/radio_button_background_blue</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="FullWithScreenDialogStyle">
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="chat_style">
+        <item name="android:textColor">#ffa6abad</item>
+        <item name="android:textSize">@dimen/dp_12</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DatePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="colorAccent">@color/blue_700</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DialogButtonStyled</item>
+    </style>
+
+    <style name="DialogButtonStyled" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/blue_700</item> <!-- button text color -->
+    </style>
+
+    <style name="table_header" parent="@android:style/TextAppearance.Small">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="table_body" parent="@android:style/TextAppearance.Small">
+        <item name="android:textStyle">bold</item>
+        <!--        <item name="android:layout_gravity">center_vertical</item>-->
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:background">@color/gray_500</item>
+        <item name="android:layout_marginEnd">@dimen/dp_0_1</item>
+        <item name="android:layout_marginTop">@dimen/dp_0_1</item>
+        <item name="android:layout_marginBottom">@dimen/dp_0_1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.1</item>
+        <item name="android:paddingStart">@dimen/dp_8</item>
+        <item name="android:minWidth">@dimen/dp_120</item>
+        <item name="android:paddingEnd">@dimen/dp_8</item>
+        <item name="android:paddingTop">@dimen/dp_8</item>
+        <item name="android:paddingBottom">@dimen/dp_8</item>
+        <!--    Text auto run horizon    -->
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+    </style>
+
+    <style name="TextTab">
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="TextTabOrder">
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+
+    <style name="TextTabSmall">
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/sp_10</item>
+    </style>
+
+    <style name="IconBackgroundTabLayout">
+        <item name="android:background">@drawable/bg_border_blue_white_selected_8dp</item>
+    </style>
+
+    <style name="text_title_information_employee">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
+    <!-- Custom item spinner   -->
+    <style name="AppThemeCustom">
+        <item name="android:background">@drawable/activated_background</item>
+        <item name="android:textColor">@color/text_selected_spinner</item>
+    </style>
+    <!--  TEXT MARQUEE  -->
+    <style name="TextMarquee">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <!--    Text auto run horizon    -->
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+    </style>
+    <!--  TEXT PRICE  -->
+    <style name="TextPrice">
+        <item name="android:ellipsize">end</item>
+        <item name="maxLine">2</item>
+    </style>
+    <!--Reaction Button Style-->
+    <style name="ReactButtonIconStyle">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">@dimen/dp_40</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:cropToPadding">false</item>
+        <item name="android:padding">@dimen/dp_2</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:background">@drawable/bottomsheet_radius_border</item>
+    </style>
+
+</resources>

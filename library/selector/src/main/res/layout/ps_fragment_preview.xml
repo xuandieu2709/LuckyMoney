@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.luck.picture.lib.magical.MagicalView
+        android:id="@+id/magical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.luck.picture.lib.widget.PreviewTitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_height="48dp" />
+
+
+    <com.luck.picture.lib.widget.PreviewBottomNavBar
+        android:id="@+id/bottom_nar_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_height="48dp" />
+
+    <com.luck.picture.lib.widget.MediumBoldTextView
+        android:id="@+id/ps_tv_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ps_checkbox_selector"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:textColor="@color/ps_color_white"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/ps_tv_selected_word"
+        app:layout_constraintRight_toLeftOf="@+id/ps_tv_selected_word"
+        app:layout_constraintTop_toTopOf="@id/ps_tv_selected_word" />
+
+    <com.luck.picture.lib.widget.MediumBoldTextView
+        android:id="@+id/ps_tv_selected_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:textColor="@color/ps_color_white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/title_bar" />
+
+    <View
+        android:id="@+id/select_click_area"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/title_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/title_bar" />
+
+    <com.luck.picture.lib.widget.CompleteSelectView
+        android:id="@+id/ps_complete_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/ps_transparent_space"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_nar_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_nar_bar" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

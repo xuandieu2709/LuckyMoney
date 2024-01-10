@@ -1,0 +1,18 @@
+R_DEF: Internal format may change without notice
+local
+attr? font
+attr? lkwBackgroundColor
+attr? lkwCenterImage
+attr? lkwCursor
+attr? lkwEdgeColor
+attr? lkwEdgeWidth
+attr? lkwSecondaryTextSize
+attr? lkwTopTextColor
+attr? lkwTopTextPadding
+attr? lkwTopTextSize
+id cursorView
+id pieView
+layout lucky_wheel_layout
+string app_name
+styleable LuckyWheelView lkwBackgroundColor lkwCursor lkwCenterImage lkwEdgeColor lkwEdgeWidth lkwTopTextColor lkwTopTextPadding lkwTopTextSize lkwSecondaryTextSize
+styleable MyTextView font

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/react_tooltip_shape"
+    android:backgroundTint="@color/gray_600"
+    android:gravity="center_horizontal"
+    android:minWidth="@dimen/dp_80">
+
+    <TextView
+        android:id="@+id/react_tooltip_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:gravity="center"
+        tools:text="Reaction" />
+</LinearLayout>

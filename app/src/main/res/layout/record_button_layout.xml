@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true">
+
+
+    <FrameLayout
+        android:id="@+id/animated_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_circle"
+        android:minWidth="40dp"
+        android:minHeight="40dp" />
+
+    <ImageView
+        android:id="@+id/image_view_mic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/count_down_card"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_mic_two"
+        android:tint="@color/white" />
+
+    <FrameLayout
+        android:id="@+id/count_down_card"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_above="@id/animated_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/onesideradius"
+        android:paddingStart="10dp"
+        android:visibility="gone"
+        tools:ignore="RtlSymmetry">
+
+        <Chronometer
+            android:id="@+id/count_down_chronometer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:fontFamily="@font/rubik_regular"
+            android:gravity="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="13sp" />
+
+    </FrameLayout>
+
+</RelativeLayout>

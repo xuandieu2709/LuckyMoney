@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/tvBgTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_blue_transparent"
+        android:gravity="start|center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_4"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:src="@drawable/bg_circle_gray"
+                app:tint="@color/green_008"/>
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="@dimen/dp_5"
+                android:singleLine="true"
+                android:text="999"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_10" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_4"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dp_8"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:src="@drawable/bg_circle_gray"
+                app:tint="@color/red_600"/>
+
+            <TextView
+                android:id="@+id/tvContentTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/dp_5"
+                android:singleLine="true"
+                android:text="999"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_10" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

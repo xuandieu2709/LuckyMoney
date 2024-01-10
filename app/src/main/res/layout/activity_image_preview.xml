@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#363636"
+        tools:context=".ui.activity.ImagePreviewActivity">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_image_preview_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/rlHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:background="@color/main_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:background="@color/black"
+                app:contentInsetStart="0dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingEnd="@dimen/dp_8">
+
+                    <ImageButton
+                        android:id="@+id/ivClose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="end|center_vertical|center_horizontal|center"
+                        android:background="@drawable/ripple_animation_button_back_header"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_back_white" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_image_preview_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_16"
+                    android:visibility="invisible"
+                    tools:text="1/10"
+                    tools:visibility="visible" />
+
+                <!--                <ImageButton-->
+                <!--                    android:id="@+id/ivDownload"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_centerVertical="true"-->
+                <!--                    android:layout_gravity="end|center_vertical|center_horizontal|center"-->
+                <!--                    android:layout_marginStart="@dimen/dp_8"-->
+                <!--                    android:layout_marginEnd="@dimen/dp_8"-->
+                <!--                    android:background="@drawable/ripple_animation_button_back_header"-->
+                <!--                    android:scaleType="center"-->
+                <!--                    android:src="@drawable/ic_download"-->
+                <!--                    android:visibility="visible" />-->
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>

@@ -1,0 +1,57 @@
+ext {
+
+    android = [
+            compileSdkVersion: 34,
+            minSdkVersion    : 24,
+            targetSdkVersion : 31,
+            versionCode      : 15,
+            versionName      : "1.9.0"
+    ]
+
+    def SERVER_TYPE_TEST = "test"
+    def SERVER_TYPE_PREVIEW = "pre"
+    def SERVER_TYPE_PRODUCT = "product"
+
+    def taskName = project.gradle.startParameter.taskNames[0]
+
+    if (taskName == null) {
+        taskName = ""
+    }
+
+    def serverType = SERVER_TYPE_PRODUCT
+
+    if (taskName.endsWith("Debug")) {
+        serverType = SERVER_TYPE_TEST
+    } else if (taskName.endsWith("Preview")) {
+        serverType = SERVER_TYPE_PREVIEW
+    }
+
+    //Gradle：./gradlew assembleRelease -P ServerType="test"
+    if (project.hasProperty("ServerType")) {
+        serverType = project.properties["ServerType"]
+    }
+
+    PROJECT_ID = "net.xdeuhug.seniorsociable.api"
+
+    REQUEST_SUCCESS = 200
+    PROJECT_ID_OAUTH = 8888
+    PROJECT_ID_NODE_REPORT = 1492
+    PROJECT_ID_APPLICATION = 8095
+    PROJECT_ID_UPLOAD = 9007
+    PROJECT_ID_SUPPLIER = 8087
+
+    switch (serverType) {
+        case SERVER_TYPE_TEST:
+            LOG_ENABLE = true
+            HOST_URL = "https://beta.api.gateway.overate-vntech.com/"
+            break
+        case SERVER_TYPE_PREVIEW:
+            LOG_ENABLE = true
+            HOST_URL = "http://172.16.10.72:7080/"
+            break
+        case SERVER_TYPE_PRODUCT:
+            LOG_ENABLE = true
+            HOST_URL = "https://api.gateway.overate-vntech.com/"
+            break
+    }
+}
