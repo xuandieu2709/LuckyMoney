@@ -64,17 +64,17 @@
                     tools:visibility="visible" />
 
                 <!--                <ImageButton-->
-                <!--                    android:id="@+id/ivDownload"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="match_parent"-->
-                <!--                    android:layout_centerVertical="true"-->
-                <!--                    android:layout_gravity="end|center_vertical|center_horizontal|center"-->
-                <!--                    android:layout_marginStart="@dimen/dp_8"-->
-                <!--                    android:layout_marginEnd="@dimen/dp_8"-->
-                <!--                    android:background="@drawable/ripple_animation_button_back_header"-->
-                <!--                    android:scaleType="center"-->
-                <!--                    android:src="@drawable/ic_download"-->
-                <!--                    android:visibility="visible" />-->
+                <!--                    vn.xdeuhug.luckyMoney:id="@+id/ivDownload"-->
+                <!--                    vn.xdeuhug.luckyMoney:layout_width="wrap_content"-->
+                <!--                    vn.xdeuhug.luckyMoney:layout_height="match_parent"-->
+                <!--                    vn.xdeuhug.luckyMoney:layout_centerVertical="true"-->
+                <!--                    vn.xdeuhug.luckyMoney:layout_gravity="end|center_vertical|center_horizontal|center"-->
+                <!--                    vn.xdeuhug.luckyMoney:layout_marginStart="@dimen/dp_8"-->
+                <!--                    vn.xdeuhug.luckyMoney:layout_marginEnd="@dimen/dp_8"-->
+                <!--                    vn.xdeuhug.luckyMoney:background="@drawable/ripple_animation_button_back_header"-->
+                <!--                    vn.xdeuhug.luckyMoney:scaleType="center"-->
+                <!--                    vn.xdeuhug.luckyMoney:src="@drawable/ic_download"-->
+                <!--                    vn.xdeuhug.luckyMoney:visibility="visible" />-->
 
             </androidx.appcompat.widget.Toolbar>
 

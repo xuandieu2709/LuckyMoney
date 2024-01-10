@@ -26,9 +26,9 @@
         <!-- Giải quyết vấn đề chuỗi tiếng Anh của Nút của Android 5.1 trở lên tự động là chữ hoa -->
         <item name="android:textAllCaps">false</item>
         <!-- Giải quyết vấn đề ImageView không thể tự động kéo giãn hình ảnh theo tỷ lệ -->
-        <!--        <item name="android:adjustViewBounds">true</item>-->
+        <!--        <item name="vn.xdeuhug.luckyMoney:adjustViewBounds">true</item>-->
         <!-- Phương thức nhập liệu bị ẩn theo mặc định. Bật tùy chọn này sẽ khiến hộp thoại nhập liệu không đóng bàn phím mềm sau khi đóng. -->
-        <!--        <item name="android:windowSoftInputMode">stateHidden</item>-->
+        <!--        <item name="vn.xdeuhug.luckyMoney:windowSoftInputMode">stateHidden</item>-->
         <!-- Tắt hiệu ứng gợn nước của RecyclerView NestedScrollView ViewPager -->
         <item name="android:overScrollMode">never</item>
         <item name="android:windowTranslucentNavigation">true</item>
@@ -44,7 +44,7 @@
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowContentOverlay">@null</item>
-<!--        <item name="android:windowBackground">@drawable/splash_background</item>-->
+<!--        <item name="vn.xdeuhug.luckyMoney:windowBackground">@drawable/splash_background</item>-->
     </style>
 
     <!-- Kiểu nút mặc định -->
@@ -211,7 +211,7 @@
 
     <style name="table_body" parent="@android:style/TextAppearance.Small">
         <item name="android:textStyle">bold</item>
-        <!--        <item name="android:layout_gravity">center_vertical</item>-->
+        <!--        <item name="vn.xdeuhug.luckyMoney:layout_gravity">center_vertical</item>-->
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/sp_12</item>

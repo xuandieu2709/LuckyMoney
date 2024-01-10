@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "932524568528",
+    "project_id": "seniorsociable",
+    "storage_bucket": "seniorsociable.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932524568528:android:f0c71037388f48ea0f93d5",
+        "android_client_info": {
+          "package_name": "vn.xdeuhug.LuckyMoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932524568528-pjauu2bgo9j6riitj4vh3g8ge7818v51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.xdeuhug.LuckyMoney",
+            "certificate_hash": "0085152b28c11087b9f18b5e0ac9cace0cbf8dd4"
+          }
+        },
+        {
+          "client_id": "932524568528-9ahq1al7esf7ths3k5qrsta4hoh9uj8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0WcLCHelP-rXNVqkGCeKWaTGPyPS3cCc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932524568528-9ahq1al7esf7ths3k5qrsta4hoh9uj8o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
