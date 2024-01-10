@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ImmersionBar
+import vn.xdeuhug.luckyMoney.R
 import vn.xdeuhug.luckyMoney.other.AppConfig
 import vn.xdeuhug.luckyMoney.app.AppActivity
 import vn.xdeuhug.luckyMoney.databinding.SplashActivityBinding
@@ -34,7 +35,7 @@ class SplashActivity : AppActivity() {
 
     override fun initData() {
         binding.ivSplashDebug.let {
-            it.setText(AppConfig.getBuildType().uppercase(Locale.getDefault()))
+            it.setText(getString(R.string.beta).uppercase(Locale.getDefault()))
             if (AppConfig.isDebug()) {
                 it.visibility = View.VISIBLE
             } else {

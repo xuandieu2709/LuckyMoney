@@ -37,15 +37,19 @@
                 android:layout_height="@dimen/dp_240"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/lucky_money_nice" />
+                app:lottie_rawRes="@raw/lixi_update" />
 
-            <vn.xdeuhug.luckyMoney.widget.AppTextViewBold
+            <TextView
                 android:id="@+id/tvLuckyMoney"
                 android:textSize="@dimen/sp_18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_marginTop="@dimen/dp_4"
+                android:textColor="@color/gray_800"
+                android:textStyle="bold"
+                android:paddingVertical="@dimen/dp_4"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp_8"
+                android:fontFamily="@font/my_soul_regular"
                 android:text="@string/lucky_money" />
         </LinearLayout>
 

@@ -31,7 +31,7 @@ public class SplashActivityBindingImpl extends SplashActivityBinding  {
     private SplashActivityBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
             , (vn.xdeuhug.widget.view.SlantedTextView) bindings[1]
-            , (vn.xdeuhug.luckyMoney.widget.AppTextViewBold) bindings[2]
+            , (android.widget.TextView) bindings[2]
             );
         this.mboundView0 = (android.widget.FrameLayout) bindings[0];
         this.mboundView0.setTag(null);
