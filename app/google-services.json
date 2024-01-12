@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:932524568528:android:f0c71037388f48ea0f93d5",
         "android_client_info": {
-          "package_name": "vn.xdeuhug.LuckyMoney"
+          "package_name": "vn.xdeuhug.luckyMoney"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "932524568528-pjauu2bgo9j6riitj4vh3g8ge7818v51.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "vn.xdeuhug.LuckyMoney",
+            "package_name": "vn.xdeuhug.luckyMoney",
             "certificate_hash": "0085152b28c11087b9f18b5e0ac9cace0cbf8dd4"
           }
         },

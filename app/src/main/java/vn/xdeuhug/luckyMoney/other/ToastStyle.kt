@@ -37,6 +37,6 @@ class ToastStyle : BlackToastStyle() {
     }
 
     override fun getGravity(): Int {
-        return Gravity.BOTTOM
+        return Gravity.TOP
     }
 }

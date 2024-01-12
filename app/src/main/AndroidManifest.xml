@@ -168,22 +168,6 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="vn.xdeuhug.luckyMoney.ui.activity.MediaActivity"
-            android:exported="true"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="vn.xdeuhug.luckyMoney.ui.activity.DetailInteractActivity"
-            android:exported="false"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="vn.xdeuhug.luckyMoney.ui.activity.NotificationActivity"
-            android:exported="false"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="vn.xdeuhug.luckyMoney.ui.activity.SpinnerActivity"
             android:exported="false"
             android:launchMode="singleTop"

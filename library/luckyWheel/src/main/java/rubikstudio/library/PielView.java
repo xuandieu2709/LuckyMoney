@@ -257,8 +257,8 @@ public class PielView extends View {
         {
             Bitmap bitmap = LuckyWheelUtils.drawableToBitmap(drawable);
             bitmap = Bitmap.createScaledBitmap(bitmap, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), false);
-            canvas.drawBitmap(bitmap, getMeasuredWidth() / 2 - bitmap.getWidth() / 2,
-                    getMeasuredHeight() / 2 - bitmap.getHeight() / 2, null);
+            canvas.drawBitmap(bitmap, (float) getMeasuredWidth() / 2 - (float) bitmap.getWidth() / 2,
+                    (float) getMeasuredHeight() / 2 - (float) bitmap.getHeight() / 2, null);
         }
     }
 
@@ -344,6 +344,13 @@ public class PielView extends View {
      */
     public void setRound(int numberOfRound) {
         mRoundOfNumber = numberOfRound;
+    }
+
+    public void setRandomRound() {
+        Random rand = new Random();
+        // nextInt as provided by Random is exclusive of the top value so you need to add 1
+        int randomNum = rand.nextInt((10 - 5) + 1) + 5;
+        mRoundOfNumber = randomNum;
     }
 
 
@@ -465,21 +472,22 @@ public class PielView extends View {
         double newFingerRotation;
 
 
+        double degrees = Math.toDegrees(Math.atan2(x - xc, yc - y));
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 viewRotation = (getRotation() + 360f) % 360f;
-                fingerRotation = Math.toDegrees(Math.atan2(x - xc, yc - y));
+                fingerRotation = degrees;
                 downPressTime = event.getEventTime();
                 return true;
             case MotionEvent.ACTION_MOVE:
-                newFingerRotation = Math.toDegrees(Math.atan2(x - xc, yc - y));
+                newFingerRotation = degrees;
 
                 if (isRotationConsistent(newFingerRotation)) {
                     setRotation(newRotationValue(viewRotation, fingerRotation, newFingerRotation));
                 }
                 return true;
             case MotionEvent.ACTION_UP:
-                newFingerRotation = Math.toDegrees(Math.atan2(x - xc, yc - y));
+                newFingerRotation = degrees;
                 float computedRotation = newRotationValue(viewRotation, fingerRotation, newFingerRotation);
 
                 fingerRotation = newFingerRotation;

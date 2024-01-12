@@ -59,7 +59,7 @@ class SplashActivity : AppActivity() {
             } catch (e: ClassNotFoundException) {
                 e.printStackTrace()
             }
-        }, 10000)
+        }, 5000)
     }
 
     override fun createStatusBarConfig(): ImmersionBar {

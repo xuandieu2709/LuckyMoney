@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-//import com.aghajari.emojiview.facebookprovider.AXFacebookEmojiProvider
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
@@ -64,7 +63,7 @@ class AppApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initSdk(this)
-        createNotificationChannels(this)
+//        createNotificationChannels(this)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         widthView = Resources.getSystem().displayMetrics.widthPixels
@@ -231,143 +230,6 @@ class AppApplication : Application() {
             }
 
         }
-
-        fun getNotificationConfig(
-            context: Context,
-            uploadId: String,
-            @StringRes title: Int
-        ): UploadNotificationConfig {
-            val clickIntent = PendingIntent.getActivity(
-                context,
-                1,
-                Intent(context, HomeActivity::class.java),
-                flagsCompat(PendingIntent.FLAG_UPDATE_CURRENT)
-            )
-
-            val autoClear = true
-            val largeIcon: Bitmap? = null
-            val clearOnAction = true
-            val ringToneEnabled = true
-
-            val cancelAction = UploadNotificationAction(
-                R.drawable.ic_ban_notification,
-                context.getString(R.string.cancel_upload),
-                context.getCancelUploadIntent(uploadId)
-            )
-
-            val noActions = ArrayList<UploadNotificationAction>(1)
-            val progressActions = ArrayList<UploadNotificationAction>(1)
-            progressActions.add(cancelAction)
-
-            val progress = UploadNotificationStatusConfig(
-                context.getString(title),
-                context.getString(R.string.uploading),
-                R.drawable.ic_upload_notification,
-                Color.BLUE,
-                largeIcon,
-                clickIntent,
-                progressActions,
-                clearOnAction,
-                autoClear
-            )
-
-            val success = UploadNotificationStatusConfig(
-                context.getString(title),
-                context.getString(R.string.upload_success),
-                R.drawable.ic_success_notification,
-                Color.GREEN,
-                largeIcon,
-                clickIntent,
-                noActions,
-                clearOnAction,
-                autoClear
-            )
-
-            val error = UploadNotificationStatusConfig(
-                context.getString(title),
-                context.getString(R.string.upload_error),
-                R.drawable.ic_error_notification,
-                Color.RED,
-                largeIcon,
-                clickIntent,
-                noActions,
-                clearOnAction,
-                autoClear
-            )
-
-            val cancelled = UploadNotificationStatusConfig(
-                context.getString(title),
-                context.getString(R.string.upload_cancelled),
-                R.drawable.ic_ban_notification,
-                Color.YELLOW,
-                largeIcon,
-                clickIntent,
-                noActions,
-                clearOnAction
-            )
-
-            return UploadNotificationConfig(
-                UPLOAD_CHANNEL_ID, ringToneEnabled, progress, success, error, cancelled
-            )
-        }
-        var socketLogout: Socket? = null
-    }
-
-    private fun createNotificationChannels(context: Context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            channelUpload = NotificationChannel(
-                UPLOAD_CHANNEL_ID,
-                "Kênh tiến trình tải",
-                NotificationManager.IMPORTANCE_LOW
-            )
-            channelUpload.description =
-                "Kênh thông báo tiến trình tải hình ảnh, video lên ứng dụng quản lý nhà cung cấp Supplier."
-            channelUpload.setSound(null, null)
-
-            //Kênh thong báo cong viec, quyen loi nhan vien
-            channelEmployee = NotificationChannel(
-                EMPLOYEE_NOTIFICATION_CHANNEL_ID,
-                "Kênh hoạt động, nhân viên",
-                NotificationManager.IMPORTANCE_HIGH
-            )
-            channelEmployee.description =
-                "Kênh thông báo các hoạt động và quyền lợi của nhân viên hệ thống nhà cung cấp."
-            channelEmployee.enableLights(true)
-            channelEmployee.enableVibration(true)
-            channelEmployee.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            val alarmSoundEmployee = Uri.parse(
-                "vn.xdeuhug.luckyMoney.resource://"
-                        + AppConfig.getPackageName() + "/" + R.raw.notification_work_and_employee
-            )
-            val audioAttributesEmployee = AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT)
-                .build()
-            channelEmployee.setSound(alarmSoundEmployee, audioAttributesEmployee)
-
-
-            channelSystem = NotificationChannel(
-                SYSTEM_NOTIFICATION_CHANNEL_ID, "Kênh hệ thống", NotificationManager.IMPORTANCE_HIGH
-            )
-            channelSystem.description = "Kênh thông báo hệ thống nhà cung cấp."
-            channelSystem.enableLights(true)
-            channelSystem.enableVibration(true)
-            channelSystem.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            val alarmSoundSystem = Uri.parse(
-                "vn.xdeuhug.luckyMoney.resource://"
-                        + AppConfig.getPackageName() + "/" + R.raw.notification_other
-            )
-            val audioAttributesSystem =
-                AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_NOTIFICATION_EVENT)
-                    .build()
-            channelSystem.setSound(alarmSoundSystem, audioAttributesSystem)
-            notificationManager =
-                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channelUpload)
-            notificationManager.createNotificationChannel(channelEmployee)
-            notificationManager.createNotificationChannel(channelSystem)
-        }
-
 
     }
 

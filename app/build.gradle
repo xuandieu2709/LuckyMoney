@@ -9,19 +9,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 android {
 
     defaultConfig {
-        applicationId 'vn.xdeuhug.LuckyMoney'
+        applicationId 'vn.xdeuhug.luckyMoney'
     }
-
-//    signingConfigs {
-//        config {
-//
-//            storeFile file('../cerfiticates/keystorenew')
-//
-//            storePassword 'techres'
-//            keyAlias = 'techres'
-//            keyPassword 'techres'
-//        }
-//    }
 
     buildTypes {
         debug {
@@ -216,9 +205,4 @@ dependencies {
     api 'cn.jzvd:jiaozivideoplayer:7.7.0'
     api 'org.jsoup:jsoup:1.15.3'
     api 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.0.0'
-
-    //Load Image with COIL: https://github.com/coil-kt/coil/issues?q=reload
-    api 'io.coil-kt:coil:2.3.0'
-    //Load Video with COIL https://coil-kt.github.io/coil/videos/
-    api 'io.coil-kt:coil-video:2.3.0'
 }

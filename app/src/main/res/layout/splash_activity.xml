@@ -41,7 +41,7 @@
 
             <TextView
                 android:id="@+id/tvLuckyMoney"
-                android:textSize="@dimen/sp_18"
+                android:textSize="@dimen/sp_24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/gray_800"

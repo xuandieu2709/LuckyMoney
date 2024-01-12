@@ -149,6 +149,9 @@
     <string name="beta">Beta</string>
 
     <string name="lucky_money">Lì Xì Đầu Năm</string>
+    <string name="congratulation_received">Chúc mừng bạn nhận được</string>
+    <string name="sound">Âm thanh</string>
+    <string name="lucky_setting">Tiền lì xì</string>
 </resources>
 
 
