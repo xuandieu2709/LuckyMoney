@@ -152,6 +152,14 @@
     <string name="congratulation_received">Chúc mừng bạn nhận được</string>
     <string name="sound">Âm thanh</string>
     <string name="lucky_setting">Tiền lì xì</string>
+    <string name="config_sound">Cấu hình âm thanh </string>
+    <string name="get_money">Nhận lộc</string>
+    <string name="music_background">Nhạc nền</string>
+    <string name="quit">Quay lại</string>
+    <string name="back_notification">Nhấn lần nữa để quay lại!</string>
+    <string name="money_current">Tiền lì xì</string>
+    <string name="save">Lưu</string>
+    <string name="max_number_99">Số lượng tiền lì tối đa là 99</string>
 </resources>
 
 

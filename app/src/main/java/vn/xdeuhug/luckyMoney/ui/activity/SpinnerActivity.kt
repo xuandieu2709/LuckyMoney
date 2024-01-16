@@ -3,6 +3,7 @@ package vn.xdeuhug.luckyMoney.ui.activity
 import android.content.Context
 import android.media.MediaPlayer
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -10,11 +11,13 @@ import kotlinx.coroutines.launch
 import rubikstudio.library.model.LuckyItem
 import vn.xdeuhug.luckyMoney.R
 import vn.xdeuhug.luckyMoney.app.AppActivity
+import vn.xdeuhug.luckyMoney.cache.MusicCache
 import vn.xdeuhug.luckyMoney.databinding.ActivitySpinnerBinding
 import vn.xdeuhug.luckyMoney.ui.dialog.LuckyBoxDialog
 import vn.xdeuhug.luckyMoney.ui.dialog.LuckyMoneyDialog
 import java.io.IOException
 import java.util.Random
+import kotlin.system.exitProcess
 
 
 /**
@@ -37,37 +40,61 @@ class SpinnerActivity : AppActivity() {
 
     @RequiresApi(33)
     override fun initView() {
-        //
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (twice) {
+                    finish()
+                }else{
+                    toast(getString(R.string.back_notification))
+                }
+                twice = true
+                postDelayed({ twice = false }, 2000)
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
     }
 
     override fun onResume() {
         super.onResume()
-        CoroutineScope(Dispatchers.IO).launch {
-            playAudioPlayer()
-        }
+        playAudioPlayer()
     }
 
     private var lengthMP3 = 0
 
     override fun onPause() {
         super.onPause()
-        mediaPlayer!!.pause()
-        lengthMP3 = mediaPlayer!!.currentPosition
+        if(mediaPlayer != null)
+        {
+            mediaPlayer!!.pause()
+            lengthMP3 = mediaPlayer!!.currentPosition
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mediaPlayer!!.stop()
+        if(mediaPlayer != null)
+        {
+            mediaPlayer!!.stop()
+        }
     }
 
     private fun playAudioPlayer() {
-        //set up MediaPlayer
-        try {
-            mediaPlayer = MediaPlayer.create(getContext(), R.raw.bg_lucky_money)
-            mediaPlayer!!.isLooping = true
-            mediaPlayer!!.start()
-        } catch (e: Exception) {
-            e.printStackTrace()
+        CoroutineScope(Dispatchers.IO).launch {
+            //set up MediaPlayer
+            val music = MusicCache.getMusic()
+            if(music.isSaveCache && music.music)
+            {
+                try {
+                    if(mediaPlayer == null)
+                    {
+                        mediaPlayer = MediaPlayer.create(getContext(), R.raw.bg_lucky_money)
+                        mediaPlayer!!.isLooping = true
+                    }
+                    mediaPlayer!!.start()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
         }
     }
 
@@ -192,30 +219,33 @@ class SpinnerActivity : AppActivity() {
         }
 
         binding.luckyWheel.setLuckyRoundItemSelectedListener {
-            if (it == 0) {
-                LuckyBoxDialog.Builder(getContext()).onCompleted(object :
-                    LuckyBoxDialog.Builder.OnCompleted {
-                    override fun onOpen() {
-                        LuckyMoneyDialog.Builder(getContext(), LuckyMoneyDialog.Builder.D_500000)
-                            .onCompleted(object :
-                                LuckyMoneyDialog.Builder.OnCompleted {
-                                override fun onOpen() {
-                                    //
-                                }
-
-                            }).create().show()
-                    }
-
-                }).create().show()
-            } else {
-                LuckyMoneyDialog.Builder(getContext(), data[it].topText.replace(",", "").toInt())
-                    .onCompleted(object :
-                        LuckyMoneyDialog.Builder.OnCompleted {
+            if(!getActivity()!!.isDestroyed)
+            {
+                if (it == 0) {
+                    LuckyBoxDialog.Builder(getContext()).onCompleted(object :
+                        LuckyBoxDialog.Builder.OnCompleted {
                         override fun onOpen() {
-                            //
+                            LuckyMoneyDialog.Builder(getContext(), LuckyMoneyDialog.Builder.D_500000)
+                                .onCompleted(object :
+                                    LuckyMoneyDialog.Builder.OnCompleted {
+                                    override fun onOpen() {
+                                        //
+                                    }
+
+                                }).create().show()
                         }
 
                     }).create().show()
+                } else {
+                    LuckyMoneyDialog.Builder(getContext(), data[it].topText.replace(",", "").toInt())
+                        .onCompleted(object :
+                            LuckyMoneyDialog.Builder.OnCompleted {
+                            override fun onOpen() {
+                                //
+                            }
+
+                        }).create().show()
+                }
             }
             postDelayed({
                 binding.luckyWheel.isTouchEnabled = true

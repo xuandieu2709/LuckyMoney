@@ -11,7 +11,7 @@ import vn.xdeuhug.luckyMoney.R
  * @Date: 28/09/2022
  */
 class AppButton : AppCompatButton {
-    var typeFont = ResourcesCompat.getFont(context, R.font.roboto_regular)
+    var typeFont = ResourcesCompat.getFont(context, R.font.great_vibes_regular)
 
     constructor(context: Context?) : super(context!!) {
         typeface = typeFont
