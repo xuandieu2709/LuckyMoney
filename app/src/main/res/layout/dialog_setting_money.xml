@@ -38,15 +38,24 @@
                         android:paddingHorizontal="@dimen/dp_16"
                         android:paddingVertical="@dimen/dp_4"
                         android:text="@string/money_current"
+                        android:background="@drawable/top_bg"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/sp_30"
                         android:textStyle="bold" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvMoney"
+                    <androidx.core.widget.NestedScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_8"/>
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvMoney"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_8"/>
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
 
                 </LinearLayout>
 
@@ -54,7 +63,7 @@
                     android:id="@+id/llBottom"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="@dimen/dp_8"
-                    android:paddingHorizontal="@dimen/dp_16"
+                    android:paddingHorizontal="@dimen/dp_32"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_8"
@@ -66,26 +75,26 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="@dimen/dp_4"
+                        android:layout_marginEnd="@dimen/dp_16"
                         android:layout_weight="1"
                         android:background="@drawable/button_rounded_rectangle"
                         android:fontFamily="@font/great_vibes_regular"
                         android:text="@string/quit"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/sp_12"
+                        android:textSize="@dimen/sp_16"
                         android:textStyle="bold" />
 
                     <vn.xdeuhug.luckyMoney.widget.AppButton
                         android:id="@+id/btnSave"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp_4"
+                        android:layout_marginStart="@dimen/dp_16"
                         android:layout_weight="1"
                         android:background="@drawable/button_rounded_rectangle"
                         android:fontFamily="@font/great_vibes_regular"
                         android:text="@string/save"
                         android:textColor="@android:color/white"
-                        android:textSize="@dimen/sp_12"
+                        android:textSize="@dimen/sp_16"
                         android:textStyle="bold" />
                 </LinearLayout>
             </RelativeLayout>

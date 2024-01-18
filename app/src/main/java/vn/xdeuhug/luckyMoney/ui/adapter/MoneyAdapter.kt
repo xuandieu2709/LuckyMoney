@@ -1,5 +1,6 @@
 package vn.xdeuhug.luckyMoney.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
@@ -27,7 +28,7 @@ class MoneyAdapter(context: Context) : AppAdapter<Money>(context) {
 
     inner class ViewHolder(private val binding: ItemMoneyBinding) : AppViewHolder(binding.root) {
         init {
-            binding.btnMinus.setOnClickListener {
+            binding.btnMinus.clickWithDebounce (100){
                 binding.edtNumber.clearFocus()
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
@@ -35,7 +36,7 @@ class MoneyAdapter(context: Context) : AppAdapter<Money>(context) {
                 }
             }
 
-            binding.btnPlus.setOnClickListener {
+            binding.btnPlus.clickWithDebounce (100) {
                 binding.edtNumber.clearFocus()
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
@@ -66,6 +67,10 @@ class MoneyAdapter(context: Context) : AppAdapter<Money>(context) {
                             if (position != RecyclerView.NO_POSITION) {
                                 val item = getItem(position)
                                 item.number = binding.edtNumber.text.toString().toInt()
+                                if(item.number >= 99)
+                                {
+                                    toast(getString(R.string.max_number_99))
+                                }
                             }
 
                         }
@@ -83,6 +88,7 @@ class MoneyAdapter(context: Context) : AppAdapter<Money>(context) {
             })
         }
 
+        @SuppressLint("DiscouragedApi")
         override fun onBindView(position: Int) {
             val item = getItem(position)
             binding.edtNumber.setText("${item.number}")

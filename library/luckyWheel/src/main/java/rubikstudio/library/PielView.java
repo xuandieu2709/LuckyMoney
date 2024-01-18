@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
@@ -17,18 +18,21 @@ import android.os.Build;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.IntDef;
 import androidx.core.graphics.ColorUtils;
+
 import rubikstudio.library.model.LuckyItem;
 
 /**
@@ -65,13 +69,20 @@ public class PielView extends View {
     long downPressTime, upPressTime;
     double newRotationStore[] = new double[3];
 
+    boolean notHaveMoney = false;
+
 
     private List<LuckyItem> mLuckyItemList;
 
     private PieRotateListener mPieRotateListener;
+    private OnSpinnerListener mOnSpinnerListener;
 
     public interface PieRotateListener {
         void rotateDone(int index);
+    }
+
+    public interface OnSpinnerListener {
+        void onHaveNotMoney();
     }
 
     public PielView(Context context) {
@@ -82,8 +93,16 @@ public class PielView extends View {
         super(context, attrs);
     }
 
+    public void setSpinnerListener(OnSpinnerListener listener) {
+        this.mOnSpinnerListener = listener;
+    }
+
     public void setPieRotateListener(PieRotateListener listener) {
         this.mPieRotateListener = listener;
+    }
+
+    public void setNotHaveMoney(boolean notHaveMoney) {
+        this.notHaveMoney = notHaveMoney;
     }
 
     private void init() {
@@ -105,7 +124,7 @@ public class PielView extends View {
     public int getLuckyItemListSize() {
         return mLuckyItemList.size();
     }
-    
+
     public void setData(List<LuckyItem> luckyItemList) {
         this.mLuckyItemList = luckyItemList;
         invalidate();
@@ -252,9 +271,29 @@ public class PielView extends View {
         canvas.drawBitmap(bitmap, null, rect, null);
     }
 
+//    private void drawImage(Canvas canvas, float tempAngle, Bitmap bitmap) {
+//        //get every arc img width and angle
+//        int imgWidth = (mRadius / mLuckyItemList.size());
+//        float angle = (float) ((tempAngle + 360 / mLuckyItemList.size() / 2) * Math.PI / 180);
+//        //calculate x and y
+//        int x = (int) (mCenter + mRadius / 2 / 2 * Math.cos(angle));
+//        int y = (int) (mCenter + mRadius / 2 / 2 * Math.sin(angle));
+//        //create arc to draw
+//        Rect rect = new Rect(x - imgWidth / 2, y - imgWidth / 2, x + imgWidth / 2, y + imgWidth / 2);
+//        //rotate main bitmap
+//        float px = rect.exactCenterX();
+//        float py = rect.exactCenterY();
+//        Matrix matrix = new Matrix();
+//        matrix.postTranslate(-bitmap.getWidth() / 2, -bitmap.getHeight() / 2);
+//        matrix.postRotate(tempAngle + 120);
+//        matrix.postTranslate(px, py);
+//        canvas.drawBitmap(bitmap, matrix, new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG));
+//        Log.d("Draw  bitmap success", bitmap.getWidth() + " : " + bitmap.getHeight());
+//        matrix.reset();
+//    }
+
     private void drawCenterImage(Canvas canvas, Drawable drawable) {
-        if(drawable != null)
-        {
+        if (drawable != null) {
             Bitmap bitmap = LuckyWheelUtils.drawableToBitmap(drawable);
             bitmap = Bitmap.createScaledBitmap(bitmap, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), false);
             canvas.drawBitmap(bitmap, (float) getMeasuredWidth() / 2 - (float) bitmap.getWidth() / 2,
@@ -349,7 +388,7 @@ public class PielView extends View {
     public void setRandomRound() {
         Random rand = new Random();
         // nextInt as provided by Random is exclusive of the top value so you need to add 1
-        int randomNum = rand.nextInt((10 - 5) + 1) + 5;
+        int randomNum = rand.nextInt((15 - 10) + 1) + 10;
         mRoundOfNumber = randomNum;
     }
 
@@ -368,7 +407,6 @@ public class PielView extends View {
      * @param rotation,  spin orientation of the wheel if clockwise or counterclockwise
      * @param startSlow, either animates a slow start or an immediate turn based on the trigger
      */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     public void rotateTo(final int index, @SpinRotation final int rotation, boolean startSlow) {
         if (isRunning) {
             return;
@@ -480,72 +518,82 @@ public class PielView extends View {
                 downPressTime = event.getEventTime();
                 return true;
             case MotionEvent.ACTION_MOVE:
-                newFingerRotation = degrees;
+                if(notHaveMoney)
+                {
+                    mOnSpinnerListener.onHaveNotMoney();
+                }else{
+                    newFingerRotation = degrees;
 
-                if (isRotationConsistent(newFingerRotation)) {
-                    setRotation(newRotationValue(viewRotation, fingerRotation, newFingerRotation));
+                    if (isRotationConsistent(newFingerRotation)) {
+                        setRotation(newRotationValue(viewRotation, fingerRotation, newFingerRotation));
+                    }
                 }
                 return true;
             case MotionEvent.ACTION_UP:
-                newFingerRotation = degrees;
-                float computedRotation = newRotationValue(viewRotation, fingerRotation, newFingerRotation);
+                if(notHaveMoney)
+                {
+                    mOnSpinnerListener.onHaveNotMoney();
+                }else {
+                    newFingerRotation = degrees;
+                    float computedRotation = newRotationValue(viewRotation, fingerRotation, newFingerRotation);
 
-                fingerRotation = newFingerRotation;
+                    fingerRotation = newFingerRotation;
 
-                // This computes if you're holding the tap for too long
-                upPressTime = event.getEventTime();
-                if (upPressTime - downPressTime > 700L) {
-                    // Disregarding the touch since the tap is too slow
-                    return true;
-                }
-
-                // These operators are added so that fling difference can be evaluated
-                // with usually numbers that are only around more or less 100 / -100.
-                if (computedRotation <= -250f) {
-                    computedRotation += 360f;
-                } else if (computedRotation >= 250f) {
-                    computedRotation -= 360f;
-                }
-
-                double flingDiff = computedRotation - viewRotation;
-                if (flingDiff >= 200 || flingDiff <= -200) {
-                    if (viewRotation <= -50f) {
-                        viewRotation += 360f;
-                    } else if (viewRotation >= 50f) {
-                        viewRotation -= 360f;
+                    // This computes if you're holding the tap for too long
+                    upPressTime = event.getEventTime();
+                    if (upPressTime - downPressTime > 700L) {
+                        // Disregarding the touch since the tap is too slow
+                        return true;
                     }
-                }
 
-                flingDiff = computedRotation - viewRotation;
-
-                if (flingDiff <= -60 ||
-                        //If you have a very fast flick / swipe, you an disregard the touch difference
-                        (flingDiff < 0 && flingDiff >= -59 && upPressTime - downPressTime <= 200L)) {
-                    if (predeterminedNumber > -1) {
-                        rotateTo(predeterminedNumber, SpinRotation.COUNTERCLOCKWISE, false);
-                    } else {
-                        rotateTo(getFallBackRandomIndex(), SpinRotation.COUNTERCLOCKWISE, false);
+                    // These operators are added so that fling difference can be evaluated
+                    // with usually numbers that are only around more or less 100 / -100.
+                    if (computedRotation <= -250f) {
+                        computedRotation += 360f;
+                    } else if (computedRotation >= 250f) {
+                        computedRotation -= 360f;
                     }
-                }
 
-                if (flingDiff >= 60 ||
-                        //If you have a very fast flick / swipe, you an disregard the touch difference
-                        (flingDiff > 0 && flingDiff <= 59 && upPressTime - downPressTime <= 200L)) {
-                    if (predeterminedNumber > -1) {
-                        rotateTo(predeterminedNumber, SpinRotation.CLOCKWISE, false);
-                    } else {
-                        rotateTo(getFallBackRandomIndex(), SpinRotation.CLOCKWISE, false);
+                    double flingDiff = computedRotation - viewRotation;
+                    if (flingDiff >= 200 || flingDiff <= -200) {
+                        if (viewRotation <= -50f) {
+                            viewRotation += 360f;
+                        } else if (viewRotation >= 50f) {
+                            viewRotation -= 360f;
+                        }
                     }
-                }
 
+                    flingDiff = computedRotation - viewRotation;
+
+                    if (flingDiff <= -60 ||
+                            //If you have a very fast flick / swipe, you an disregard the touch difference
+                            (flingDiff < 0 && flingDiff >= -59 && upPressTime - downPressTime <= 200L)) {
+                        if (predeterminedNumber > -1) {
+                            rotateTo(predeterminedNumber, SpinRotation.COUNTERCLOCKWISE, false);
+                        } else {
+                            rotateTo(getFallBackRandomIndex(), SpinRotation.COUNTERCLOCKWISE, false);
+                        }
+                    }
+
+                    if (flingDiff >= 60 ||
+                            //If you have a very fast flick / swipe, you an disregard the touch difference
+                            (flingDiff > 0 && flingDiff <= 59 && upPressTime - downPressTime <= 200L)) {
+                        if (predeterminedNumber > -1) {
+                            rotateTo(predeterminedNumber, SpinRotation.CLOCKWISE, false);
+                        } else {
+                            rotateTo(getFallBackRandomIndex(), SpinRotation.CLOCKWISE, false);
+                        }
+                    }
+
+                }
                 return true;
         }
         return super.onTouchEvent(event);
     }
 
-    private float newRotationValue(final float originalWheenRotation, final double originalFingerRotation, final double newFingerRotation) {
+    private float newRotationValue(final float originalWheelRotation, final double originalFingerRotation, final double newFingerRotation) {
         double computationalRotation = newFingerRotation - originalFingerRotation;
-        return (originalWheenRotation + (float) computationalRotation + 360f) % 360f;
+        return (originalWheelRotation + (float) computationalRotation + 360f) % 360f;
     }
 
     private int getFallBackRandomIndex() {

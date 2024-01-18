@@ -23,6 +23,7 @@ import vn.xdeuhug.luckyMoney.databinding.DialogConfirmBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogExitBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogLuckyBoxBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogLuckyMoneyBindingImpl;
+import vn.xdeuhug.luckyMoney.databinding.DialogNotHaveMoneyBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogNotificationBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogSettingMoneyBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogSoundBindingImpl;
@@ -53,31 +54,33 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_DIALOGLUCKYMONEY = 8;
 
-  private static final int LAYOUT_DIALOGNOTIFICATION = 9;
+  private static final int LAYOUT_DIALOGNOTHAVEMONEY = 9;
 
-  private static final int LAYOUT_DIALOGSETTINGMONEY = 10;
+  private static final int LAYOUT_DIALOGNOTIFICATION = 10;
 
-  private static final int LAYOUT_DIALOGSOUND = 11;
+  private static final int LAYOUT_DIALOGSETTINGMONEY = 11;
 
-  private static final int LAYOUT_FRAGMENTNOSUPPORT = 12;
+  private static final int LAYOUT_DIALOGSOUND = 12;
 
-  private static final int LAYOUT_LAYOUTLINEMARKER = 13;
+  private static final int LAYOUT_FRAGMENTNOSUPPORT = 13;
 
-  private static final int LAYOUT_LAYOUTMARKER = 14;
+  private static final int LAYOUT_LAYOUTLINEMARKER = 14;
 
-  private static final int LAYOUT_PICKERITEM = 15;
+  private static final int LAYOUT_LAYOUTMARKER = 15;
 
-  private static final int LAYOUT_SPLASHACTIVITY = 16;
+  private static final int LAYOUT_PICKERITEM = 16;
 
-  private static final int LAYOUT_SUCCESSDIALOG = 17;
+  private static final int LAYOUT_SPLASHACTIVITY = 17;
 
-  private static final int LAYOUT_TABITEMDESIGN = 18;
+  private static final int LAYOUT_SUCCESSDIALOG = 18;
 
-  private static final int LAYOUT_TABITEMSLIDING = 19;
+  private static final int LAYOUT_TABITEMDESIGN = 19;
 
-  private static final int LAYOUT_WAITDIALOG = 20;
+  private static final int LAYOUT_TABITEMSLIDING = 20;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(20);
+  private static final int LAYOUT_WAITDIALOG = 21;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(21);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.activity_image_preview, LAYOUT_ACTIVITYIMAGEPREVIEW);
@@ -88,6 +91,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_exit, LAYOUT_DIALOGEXIT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_box, LAYOUT_DIALOGLUCKYBOX);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_money, LAYOUT_DIALOGLUCKYMONEY);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_not_have_money, LAYOUT_DIALOGNOTHAVEMONEY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_notification, LAYOUT_DIALOGNOTIFICATION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_setting_money, LAYOUT_DIALOGSETTINGMONEY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_sound, LAYOUT_DIALOGSOUND);
@@ -158,6 +162,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new DialogLuckyMoneyBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for dialog_lucky_money is invalid. Received: " + tag);
+        }
+        case  LAYOUT_DIALOGNOTHAVEMONEY: {
+          if ("layout/dialog_not_have_money_0".equals(tag)) {
+            return new DialogNotHaveMoneyBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for dialog_not_have_money is invalid. Received: " + tag);
         }
         case  LAYOUT_DIALOGNOTIFICATION: {
           if ("layout/dialog_notification_0".equals(tag)) {
@@ -284,7 +294,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(20);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(21);
 
     static {
       sKeys.put("layout/activity_image_preview_0", vn.xdeuhug.luckyMoney.R.layout.activity_image_preview);
@@ -295,6 +305,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/dialog_exit_0", vn.xdeuhug.luckyMoney.R.layout.dialog_exit);
       sKeys.put("layout/dialog_lucky_box_0", vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_box);
       sKeys.put("layout/dialog_lucky_money_0", vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_money);
+      sKeys.put("layout/dialog_not_have_money_0", vn.xdeuhug.luckyMoney.R.layout.dialog_not_have_money);
       sKeys.put("layout/dialog_notification_0", vn.xdeuhug.luckyMoney.R.layout.dialog_notification);
       sKeys.put("layout/dialog_setting_money_0", vn.xdeuhug.luckyMoney.R.layout.dialog_setting_money);
       sKeys.put("layout/dialog_sound_0", vn.xdeuhug.luckyMoney.R.layout.dialog_sound);

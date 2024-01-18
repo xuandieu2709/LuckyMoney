@@ -7,8 +7,10 @@ import androidx.annotation.RequiresApi
 import org.jetbrains.anko.startActivity
 import vn.xdeuhug.luckyMoney.R
 import vn.xdeuhug.luckyMoney.app.AppActivity
+import vn.xdeuhug.luckyMoney.cache.ListMoneyCache
 import vn.xdeuhug.luckyMoney.cache.MusicCache
 import vn.xdeuhug.luckyMoney.databinding.HomeActivityBinding
+import vn.xdeuhug.luckyMoney.model.eventbus.Money
 import vn.xdeuhug.luckyMoney.ui.dialog.SettingMoneyDialog
 import vn.xdeuhug.luckyMoney.ui.dialog.SoundDialog
 import kotlin.system.exitProcess
@@ -43,7 +45,7 @@ class HomeActivity : AppActivity() {
             if(countResume == 0)
             {
                 mediaPlayer = MediaPlayer.create(getContext(), R.raw.tap_notification)
-//                mediaPlayer!!.start()
+//                mediaPlayer!!.prepareAsync()
             }
             countResume++
         }
@@ -96,7 +98,7 @@ class HomeActivity : AppActivity() {
             playAudioPlayer()
             SoundDialog.Builder(getContext()).onCompleted(object : SoundDialog.Builder.OnCompleted{
                 override fun onClose() {
-                    //
+                    music = MusicCache.getMusic()
                 }
 
             }).create().show()
@@ -107,6 +109,10 @@ class HomeActivity : AppActivity() {
             SettingMoneyDialog.Builder(getContext()).onCompleted(object : SettingMoneyDialog.Builder.OnCompleted{
                 override fun onClose() {
                     //
+                }
+
+                override fun onSave(listMoneyNew: ArrayList<Money>) {
+                    ListMoneyCache.saveList(listMoneyNew)
                 }
 
             }).create().show()

@@ -159,7 +159,9 @@
     <string name="back_notification">Nhấn lần nữa để quay lại!</string>
     <string name="money_current">Tiền lì xì</string>
     <string name="save">Lưu</string>
-    <string name="max_number_99">Số lượng tiền lì tối đa là 99</string>
+    <string name="max_number_99">Số lượng tiền lì xì tối đa là 99</string>
+    <string name="not_have_money">Hết tiền lì xì rồi!</string>
+    <string name="add_money">Thêm lì xì</string>
 </resources>
 
 

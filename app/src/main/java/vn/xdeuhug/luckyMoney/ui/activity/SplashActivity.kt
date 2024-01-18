@@ -25,7 +25,7 @@ class SplashActivity : AppActivity() {
     }
 
     override fun initView() {
-
+        //
     }
 
     @Deprecated("Deprecated in Java")
@@ -59,7 +59,7 @@ class SplashActivity : AppActivity() {
             } catch (e: ClassNotFoundException) {
                 e.printStackTrace()
             }
-        }, 5000)
+        }, 3000)
     }
 
     override fun createStatusBarConfig(): ImmersionBar {

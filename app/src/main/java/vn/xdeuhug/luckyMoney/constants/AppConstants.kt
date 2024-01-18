@@ -9,6 +9,7 @@ AppConstants {
 
     const val CACHE_HTTP_LOG = "CACHE_HTTP_LOG"
     const val CACHE_MUSIC = "CACHE_MUSIC"
+    const val CACHE_LIST_MONEY = "CACHE_LIST_MONEY"
 
     const val FOLDER_APP = "techres/supplier"//folder lưu file của App
 }

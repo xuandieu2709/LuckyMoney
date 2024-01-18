@@ -21,7 +21,7 @@ import rubikstudio.library.model.LuckyItem;
  * Created by XD on 11/5/16.
  */
 
-public class LuckyWheelView extends RelativeLayout implements PielView.PieRotateListener {
+public class LuckyWheelView extends RelativeLayout implements PielView.PieRotateListener, PielView.OnSpinnerListener {
     private int mBackgroundColor;
     private int mTextColor;
     private int mTopTextSize;
@@ -37,10 +37,25 @@ public class LuckyWheelView extends RelativeLayout implements PielView.PieRotate
 
     private LuckyRoundItemSelectedListener mLuckyRoundItemSelectedListener;
 
+    private OnSpinnerListener mOnSpinnerListener;
+    public interface OnSpinnerListener {
+        void onNotHaveMoney();
+    }
+    public void setOnSpinnerListener(OnSpinnerListener listener) {
+        this.mOnSpinnerListener = listener;
+    }
+
     @Override
     public void rotateDone(int index) {
         if (mLuckyRoundItemSelectedListener != null) {
             mLuckyRoundItemSelectedListener.LuckyRoundItemSelected(index);
+        }
+    }
+
+    @Override
+    public void onHaveNotMoney() {
+        if (mOnSpinnerListener != null) {
+            mOnSpinnerListener.onNotHaveMoney();
         }
     }
 
@@ -88,6 +103,7 @@ public class LuckyWheelView extends RelativeLayout implements PielView.PieRotate
         ivCursorView = frameLayout.findViewById(R.id.cursorView);
 
         pielView.setPieRotateListener(this);
+        pielView.setSpinnerListener(this);
         pielView.setPieBackgroundColor(mBackgroundColor);
         pielView.setTopTextPadding(mTopTextPadding);
         pielView.setTopTextSize(mTopTextSize);
@@ -105,7 +121,7 @@ public class LuckyWheelView extends RelativeLayout implements PielView.PieRotate
         addView(frameLayout);
     }
 
-    
+
     public boolean isTouchEnabled() {
         return pielView.isTouchEnabled();
     }
@@ -113,23 +129,26 @@ public class LuckyWheelView extends RelativeLayout implements PielView.PieRotate
     public void setTouchEnabled(boolean touchEnabled) {
         pielView.setTouchEnabled(touchEnabled);
     }
+    public void setNotHaveMoney(boolean notHaveMoney) {
+        pielView.setNotHaveMoney(notHaveMoney);
+    }
 
-    
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         //This is to control that the touch events triggered are only going to the PieView
         for (int i = 0; i < getChildCount(); i++) {
-            if (isPielView(getChildAt(i))) {
+            if (isPieView(getChildAt(i))) {
                 return super.dispatchTouchEvent(ev);
             }
         }
         return false;
     }
 
-    private boolean isPielView(View view) {
+    private boolean isPieView(View view) {
         if (view instanceof ViewGroup) {
             for (int i = 0; i < getChildCount(); i++) {
-                if (isPielView(((ViewGroup) view).getChildAt(i))) {
+                if (isPieView(((ViewGroup) view).getChildAt(i))) {
                     return true;
                 }
             }
@@ -137,7 +156,7 @@ public class LuckyWheelView extends RelativeLayout implements PielView.PieRotate
         return view instanceof PielView;
     }
 
-    public void setLuckyWheelBackgrouldColor(int color) {
+    public void setLuckyWheelBackgroundColor(int color) {
         pielView.setPieBackgroundColor(color);
     }
 
@@ -185,7 +204,7 @@ public class LuckyWheelView extends RelativeLayout implements PielView.PieRotate
     public void startLuckyWheelWithTargetIndex(int index) {
         pielView.rotateTo(index);
     }
-    
+
     public void startLuckyWheelWithRandomTarget() {
         Random r = new Random();
         pielView.rotateTo(r.nextInt(pielView.getLuckyItemListSize() - 1));
