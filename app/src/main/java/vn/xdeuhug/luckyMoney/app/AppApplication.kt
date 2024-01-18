@@ -73,16 +73,6 @@ class AppApplication : Application() {
     companion object {
         lateinit var kv: MMKV
         var instance: AppApplication? = null
-        const val UPLOAD_CHANNEL_ID = "UPLOAD_CHANNEL_ID" // Kênh thông báo upload
-        const val EMPLOYEE_NOTIFICATION_CHANNEL_ID =
-            "EMPLOYEE_NOTIFICATION_CHANNEL_ID" // Kênh thông báo nhân viên
-        const val SYSTEM_NOTIFICATION_CHANNEL_ID =
-            "SYSTEM_NOTIFICATION_CHANNEL_ID" // Kênh thông báo hệ thống
-
-        lateinit var channelUpload: NotificationChannel
-        lateinit var channelEmployee: NotificationChannel
-        lateinit var channelSystem: NotificationChannel
-        lateinit var notificationManager: NotificationManager
 
         var widthView = 0
         var heightView = 0
@@ -100,17 +90,6 @@ class AppApplication : Application() {
                         R.color.common_accent_color
                     )
                 )
-            }
-
-            SmartRefreshLayout.setDefaultRefreshInitializer { _, layout ->
-                layout.setEnableAutoLoadMore(false)
-                layout.setEnableOverScrollDrag(true)
-                layout.setEnableOverScrollBounce(true)
-                layout.setEnableLoadMoreWhenContentNotFull(true)
-                layout.setEnableScrollContentWhenRefreshed(true)
-                layout.setPrimaryColorsId(R.color.main_bg, android.R.color.white)
-                layout.setFooterMaxDragRate(4.0f)
-                layout.setFooterHeight(0f)
             }
 
             // Khởi tạo toast

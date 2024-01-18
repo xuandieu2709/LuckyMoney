@@ -1,7 +1,7 @@
 package vn.xdeuhug.luckyMoney.cache
 
-import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.tencent.mmkv.MMKV
 import vn.xdeuhug.luckyMoney.constants.AppConstants
 import vn.xdeuhug.luckyMoney.model.eventbus.Money

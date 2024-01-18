@@ -15,94 +15,54 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import vn.xdeuhug.luckyMoney.databinding.ActivityImagePreviewBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.CrashActivityBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.DateDialogBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.DialogCancelBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogConfirmBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.DialogExitBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogLuckyBoxBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogLuckyMoneyBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogNotHaveMoneyBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogNotificationBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogSettingMoneyBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.DialogSoundBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.FragmentNoSupportBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.LayoutLineMarkerBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.LayoutMarkerBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.PickerItemBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.SplashActivityBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.SuccessDialogBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.TabItemDesignBindingImpl;
-import vn.xdeuhug.luckyMoney.databinding.TabItemSlidingBindingImpl;
 import vn.xdeuhug.luckyMoney.databinding.WaitDialogBindingImpl;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
-  private static final int LAYOUT_ACTIVITYIMAGEPREVIEW = 1;
+  private static final int LAYOUT_CRASHACTIVITY = 1;
 
-  private static final int LAYOUT_CRASHACTIVITY = 2;
+  private static final int LAYOUT_DIALOGCONFIRM = 2;
 
-  private static final int LAYOUT_DATEDIALOG = 3;
+  private static final int LAYOUT_DIALOGLUCKYBOX = 3;
 
-  private static final int LAYOUT_DIALOGCANCEL = 4;
+  private static final int LAYOUT_DIALOGLUCKYMONEY = 4;
 
-  private static final int LAYOUT_DIALOGCONFIRM = 5;
+  private static final int LAYOUT_DIALOGNOTHAVEMONEY = 5;
 
-  private static final int LAYOUT_DIALOGEXIT = 6;
+  private static final int LAYOUT_DIALOGNOTIFICATION = 6;
 
-  private static final int LAYOUT_DIALOGLUCKYBOX = 7;
+  private static final int LAYOUT_DIALOGSETTINGMONEY = 7;
 
-  private static final int LAYOUT_DIALOGLUCKYMONEY = 8;
+  private static final int LAYOUT_DIALOGSOUND = 8;
 
-  private static final int LAYOUT_DIALOGNOTHAVEMONEY = 9;
+  private static final int LAYOUT_SPLASHACTIVITY = 9;
 
-  private static final int LAYOUT_DIALOGNOTIFICATION = 10;
+  private static final int LAYOUT_SUCCESSDIALOG = 10;
 
-  private static final int LAYOUT_DIALOGSETTINGMONEY = 11;
+  private static final int LAYOUT_WAITDIALOG = 11;
 
-  private static final int LAYOUT_DIALOGSOUND = 12;
-
-  private static final int LAYOUT_FRAGMENTNOSUPPORT = 13;
-
-  private static final int LAYOUT_LAYOUTLINEMARKER = 14;
-
-  private static final int LAYOUT_LAYOUTMARKER = 15;
-
-  private static final int LAYOUT_PICKERITEM = 16;
-
-  private static final int LAYOUT_SPLASHACTIVITY = 17;
-
-  private static final int LAYOUT_SUCCESSDIALOG = 18;
-
-  private static final int LAYOUT_TABITEMDESIGN = 19;
-
-  private static final int LAYOUT_TABITEMSLIDING = 20;
-
-  private static final int LAYOUT_WAITDIALOG = 21;
-
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(21);
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(11);
 
   static {
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.activity_image_preview, LAYOUT_ACTIVITYIMAGEPREVIEW);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.crash_activity, LAYOUT_CRASHACTIVITY);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.date_dialog, LAYOUT_DATEDIALOG);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_cancel, LAYOUT_DIALOGCANCEL);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_confirm, LAYOUT_DIALOGCONFIRM);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_exit, LAYOUT_DIALOGEXIT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_box, LAYOUT_DIALOGLUCKYBOX);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_money, LAYOUT_DIALOGLUCKYMONEY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_not_have_money, LAYOUT_DIALOGNOTHAVEMONEY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_notification, LAYOUT_DIALOGNOTIFICATION);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_setting_money, LAYOUT_DIALOGSETTINGMONEY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.dialog_sound, LAYOUT_DIALOGSOUND);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.fragment_no_support, LAYOUT_FRAGMENTNOSUPPORT);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.layout_line_marker, LAYOUT_LAYOUTLINEMARKER);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.layout_marker, LAYOUT_LAYOUTMARKER);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.picker_item, LAYOUT_PICKERITEM);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.splash_activity, LAYOUT_SPLASHACTIVITY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.success_dialog, LAYOUT_SUCCESSDIALOG);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.tab_item_design, LAYOUT_TABITEMDESIGN);
-    INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.tab_item_sliding, LAYOUT_TABITEMSLIDING);
     INTERNAL_LAYOUT_ID_LOOKUP.put(vn.xdeuhug.luckyMoney.R.layout.wait_dialog, LAYOUT_WAITDIALOG);
   }
 
@@ -115,41 +75,17 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         throw new RuntimeException("view must have a tag");
       }
       switch(localizedLayoutId) {
-        case  LAYOUT_ACTIVITYIMAGEPREVIEW: {
-          if ("layout/activity_image_preview_0".equals(tag)) {
-            return new ActivityImagePreviewBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for activity_image_preview is invalid. Received: " + tag);
-        }
         case  LAYOUT_CRASHACTIVITY: {
           if ("layout/crash_activity_0".equals(tag)) {
             return new CrashActivityBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for crash_activity is invalid. Received: " + tag);
         }
-        case  LAYOUT_DATEDIALOG: {
-          if ("layout/date_dialog_0".equals(tag)) {
-            return new DateDialogBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for date_dialog is invalid. Received: " + tag);
-        }
-        case  LAYOUT_DIALOGCANCEL: {
-          if ("layout/dialog_cancel_0".equals(tag)) {
-            return new DialogCancelBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for dialog_cancel is invalid. Received: " + tag);
-        }
         case  LAYOUT_DIALOGCONFIRM: {
           if ("layout/dialog_confirm_0".equals(tag)) {
             return new DialogConfirmBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for dialog_confirm is invalid. Received: " + tag);
-        }
-        case  LAYOUT_DIALOGEXIT: {
-          if ("layout/dialog_exit_0".equals(tag)) {
-            return new DialogExitBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for dialog_exit is invalid. Received: " + tag);
         }
         case  LAYOUT_DIALOGLUCKYBOX: {
           if ("layout/dialog_lucky_box_0".equals(tag)) {
@@ -187,30 +123,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
           }
           throw new IllegalArgumentException("The tag for dialog_sound is invalid. Received: " + tag);
         }
-        case  LAYOUT_FRAGMENTNOSUPPORT: {
-          if ("layout/fragment_no_support_0".equals(tag)) {
-            return new FragmentNoSupportBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for fragment_no_support is invalid. Received: " + tag);
-        }
-        case  LAYOUT_LAYOUTLINEMARKER: {
-          if ("layout/layout_line_marker_0".equals(tag)) {
-            return new LayoutLineMarkerBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for layout_line_marker is invalid. Received: " + tag);
-        }
-        case  LAYOUT_LAYOUTMARKER: {
-          if ("layout/layout_marker_0".equals(tag)) {
-            return new LayoutMarkerBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for layout_marker is invalid. Received: " + tag);
-        }
-        case  LAYOUT_PICKERITEM: {
-          if ("layout/picker_item_0".equals(tag)) {
-            return new PickerItemBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for picker_item is invalid. Received: " + tag);
-        }
         case  LAYOUT_SPLASHACTIVITY: {
           if ("layout/splash_activity_0".equals(tag)) {
             return new SplashActivityBindingImpl(component, view);
@@ -222,18 +134,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new SuccessDialogBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for success_dialog is invalid. Received: " + tag);
-        }
-        case  LAYOUT_TABITEMDESIGN: {
-          if ("layout/tab_item_design_0".equals(tag)) {
-            return new TabItemDesignBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for tab_item_design is invalid. Received: " + tag);
-        }
-        case  LAYOUT_TABITEMSLIDING: {
-          if ("layout/tab_item_sliding_0".equals(tag)) {
-            return new TabItemSlidingBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for tab_item_sliding is invalid. Received: " + tag);
         }
         case  LAYOUT_WAITDIALOG: {
           if ("layout/wait_dialog_0".equals(tag)) {
@@ -294,29 +194,19 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(21);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(11);
 
     static {
-      sKeys.put("layout/activity_image_preview_0", vn.xdeuhug.luckyMoney.R.layout.activity_image_preview);
       sKeys.put("layout/crash_activity_0", vn.xdeuhug.luckyMoney.R.layout.crash_activity);
-      sKeys.put("layout/date_dialog_0", vn.xdeuhug.luckyMoney.R.layout.date_dialog);
-      sKeys.put("layout/dialog_cancel_0", vn.xdeuhug.luckyMoney.R.layout.dialog_cancel);
       sKeys.put("layout/dialog_confirm_0", vn.xdeuhug.luckyMoney.R.layout.dialog_confirm);
-      sKeys.put("layout/dialog_exit_0", vn.xdeuhug.luckyMoney.R.layout.dialog_exit);
       sKeys.put("layout/dialog_lucky_box_0", vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_box);
       sKeys.put("layout/dialog_lucky_money_0", vn.xdeuhug.luckyMoney.R.layout.dialog_lucky_money);
       sKeys.put("layout/dialog_not_have_money_0", vn.xdeuhug.luckyMoney.R.layout.dialog_not_have_money);
       sKeys.put("layout/dialog_notification_0", vn.xdeuhug.luckyMoney.R.layout.dialog_notification);
       sKeys.put("layout/dialog_setting_money_0", vn.xdeuhug.luckyMoney.R.layout.dialog_setting_money);
       sKeys.put("layout/dialog_sound_0", vn.xdeuhug.luckyMoney.R.layout.dialog_sound);
-      sKeys.put("layout/fragment_no_support_0", vn.xdeuhug.luckyMoney.R.layout.fragment_no_support);
-      sKeys.put("layout/layout_line_marker_0", vn.xdeuhug.luckyMoney.R.layout.layout_line_marker);
-      sKeys.put("layout/layout_marker_0", vn.xdeuhug.luckyMoney.R.layout.layout_marker);
-      sKeys.put("layout/picker_item_0", vn.xdeuhug.luckyMoney.R.layout.picker_item);
       sKeys.put("layout/splash_activity_0", vn.xdeuhug.luckyMoney.R.layout.splash_activity);
       sKeys.put("layout/success_dialog_0", vn.xdeuhug.luckyMoney.R.layout.success_dialog);
-      sKeys.put("layout/tab_item_design_0", vn.xdeuhug.luckyMoney.R.layout.tab_item_design);
-      sKeys.put("layout/tab_item_sliding_0", vn.xdeuhug.luckyMoney.R.layout.tab_item_sliding);
       sKeys.put("layout/wait_dialog_0", vn.xdeuhug.luckyMoney.R.layout.wait_dialog);
     }
   }

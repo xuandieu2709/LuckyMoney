@@ -23,10 +23,6 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.WriterException
-import com.google.zxing.common.BitMatrix
-import com.google.zxing.qrcode.QRCodeWriter
 import timber.log.Timber
 import vn.xdeuhug.luckyMoney.app.AppApplication
 import vn.xdeuhug.luckyMoney.constants.AppConstants
@@ -501,29 +497,6 @@ object AppUtils {
         return link
     }
 
-    fun generateQRCode(idGroup: String): Bitmap? {
-        return try {
-            val result: BitMatrix = QRCodeWriter().encode(
-                String.format(
-                    "%s", idGroup
-                ), BarcodeFormat.QR_CODE, 1024, 1024
-            )
-            val bitmap: Bitmap = Bitmap.createBitmap(
-                result.width, result.height, Bitmap.Config.ARGB_8888
-            )
-            for (y in 0 until result.height) {
-                for (x in 0 until result.width) {
-                    if (result.get(x, y)) {
-                        bitmap.setPixel(x, y, Color.BLACK)
-                    }
-                }
-            }
-            bitmap
-        } catch (e: WriterException) {
-            Bitmap.createBitmap(1024, 1024, Bitmap.Config.ARGB_8888)
-        }
-    }
-
     fun removeVietnameseFromString(str: String): String {
         val slug: String = try {
             val temp: String = Normalizer.normalize(str, Normalizer.Form.NFD)
@@ -630,6 +603,11 @@ object AppUtils {
             e.printStackTrace()
         }
         return realPath
+    }
+
+    // Extension function để chuyển đổi List thành ArrayList
+    fun <T> List<T>.toArrayList(): ArrayList<T> {
+        return ArrayList(this)
     }
 
 }

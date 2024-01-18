@@ -19,6 +19,7 @@ import vn.xdeuhug.luckyMoney.ui.dialog.LuckyBoxDialog
 import vn.xdeuhug.luckyMoney.ui.dialog.LuckyMoneyDialog
 import vn.xdeuhug.luckyMoney.ui.dialog.NotHaveMoneyDialog
 import vn.xdeuhug.luckyMoney.ui.dialog.SettingMoneyDialog
+import vn.xdeuhug.luckyMoney.utils.AppUtils
 import vn.xdeuhug.luckyMoney.utils.MoneyUtils
 import java.io.IOException
 import java.util.Random
@@ -192,17 +193,13 @@ class SpinnerActivity : AppActivity() {
         /////////////////////
         binding.luckyWheel.setData(data)
         binding.luckyWheel.setRandomRound()
-//        binding.luckyWheel.setPredeterminedNumber(getRandomIndex())
-        binding.luckyWheel.setNotHaveMoney(!MoneyUtils.checkMoneyCacheExist())
-
+        setDataMoney()
         binding.play.clickWithDebounce {
-            if(MoneyUtils.checkMoneyCacheExist())
-            {
-                binding.luckyWheel.startLuckyWheelWithTargetIndex(getRandomIndex())
+            if (MoneyUtils.checkMoneyCacheExist()) {
+                binding.luckyWheel.startLuckyWheelWithTargetIndex(MoneyUtils.randomPosition(data))
                 binding.luckyWheel.isTouchEnabled = false
-            }else{
-                if(dialog == null)
-                {
+            } else {
+                if (dialog == null) {
                     dialog = NotHaveMoneyDialog.Builder(getContext()).onCompleted(object :
                         NotHaveMoneyDialog.Builder.OnCompleted {
                         override fun onClose() {
@@ -218,7 +215,7 @@ class SpinnerActivity : AppActivity() {
 
                                     override fun onSave(listMoneyNew: ArrayList<Money>) {
                                         ListMoneyCache.saveList(listMoneyNew)
-                                        binding.luckyWheel.setNotHaveMoney(!MoneyUtils.checkMoneyCacheExist())
+                                        setDataMoney()
                                         dialog = null
                                     }
 
@@ -233,8 +230,7 @@ class SpinnerActivity : AppActivity() {
         }
 
         binding.luckyWheel.setOnSpinnerListener {
-            if(dialog == null)
-            {
+            if (dialog == null) {
                 dialog = NotHaveMoneyDialog.Builder(getContext()).onCompleted(object :
                     NotHaveMoneyDialog.Builder.OnCompleted {
                     override fun onClose() {
@@ -250,7 +246,7 @@ class SpinnerActivity : AppActivity() {
 
                                 override fun onSave(listMoneyNew: ArrayList<Money>) {
                                     ListMoneyCache.saveList(listMoneyNew)
-                                    binding.luckyWheel.setNotHaveMoney(!MoneyUtils.checkMoneyCacheExist())
+                                    setDataMoney()
                                     dialog = null
                                 }
 
@@ -266,17 +262,26 @@ class SpinnerActivity : AppActivity() {
         binding.luckyWheel.setLuckyRoundItemSelectedListener {
             if (!getActivity()!!.isDestroyed) {
                 if (it == 0) {
+                    val moneyHighest = MoneyUtils.getHighestMoney()
                     LuckyBoxDialog.Builder(getContext()).onCompleted(object :
                         LuckyBoxDialog.Builder.OnCompleted {
                         override fun onOpen() {
                             LuckyMoneyDialog.Builder(
                                 getContext(),
-                                LuckyMoneyDialog.Builder.D_500000
+//                                LuckyMoneyDialog.Builder.D_500000
+                                moneyHighest.money
                             )
                                 .onCompleted(object :
                                     LuckyMoneyDialog.Builder.OnCompleted {
                                     override fun onOpen() {
                                         //
+                                        // Minus Number
+                                        MoneyUtils.minusNumberItem(
+                                            moneyHighest,
+                                            ListMoneyCache.getList()
+                                        )
+                                        //
+                                        setDataMoney()
                                     }
 
                                 }).create().show()
@@ -284,6 +289,13 @@ class SpinnerActivity : AppActivity() {
 
                     }).create().show()
                 } else {
+                    // Minus Number
+                    MoneyUtils.minusNumberItem(
+                        ListMoneyCache.getList()
+                            .first { item -> item.money == data[it].topText.replace(",", "").toInt() },
+                        ListMoneyCache.getList()
+                    )
+                    //
                     LuckyMoneyDialog.Builder(
                         getContext(),
                         data[it].topText.replace(",", "").toInt()
@@ -300,7 +312,15 @@ class SpinnerActivity : AppActivity() {
             postDelayed({
                 binding.luckyWheel.isTouchEnabled = true
             }, 3000)
+            // set lại vị trí random
+            setDataMoney()
         }
+    }
+
+    private fun setDataMoney()
+    {
+        binding.luckyWheel.setPredeterminedNumber(MoneyUtils.randomPosition(data))
+        binding.luckyWheel.setNotHaveMoney(!MoneyUtils.checkMoneyCacheExist())
     }
 
     private fun getRandomIndex(): Int {
@@ -321,9 +341,4 @@ class SpinnerActivity : AppActivity() {
 
         return data.indexOf(data.firstOrNull { it.topText == "1,000" })
     }
-
-//    private fun randomPositionInListMoney():Int
-//    {
-//
-//    }
 }
