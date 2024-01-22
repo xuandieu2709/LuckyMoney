@@ -21,7 +21,7 @@ object MoneyUtils {
         if (listMoney.isNotEmpty()) {
             val randomIndex = Random.nextInt(listMoney.size)
             val randomElement = listMoney[randomIndex]
-            return if ((Random.nextInt((100 - 80) + 1) + 100) in 80..180) {
+            return if ((Random.nextInt((100 - 50) + 1) + 100) in 80..101) {
                 0
             } else {
                 data.indexOf(data.first {
@@ -36,7 +36,7 @@ object MoneyUtils {
     }
 
     fun getHighestMoney(): Money {
-        return ListMoneyCache.getList().filter { it.number > 0 }.maxByOrNull { it.number }!!
+        return ListMoneyCache.getList().filter { it.number > 0 }.maxByOrNull { it.money }!!
     }
 
     fun minusNumberItem(item: Money, listMoney: ArrayList<Money>) {

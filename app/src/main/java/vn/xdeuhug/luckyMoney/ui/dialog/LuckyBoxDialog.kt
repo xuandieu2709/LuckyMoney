@@ -3,10 +3,8 @@ package vn.xdeuhug.luckyMoney.ui.dialog
 import android.animation.Animator
 import android.content.Context
 import android.view.LayoutInflater
-import com.luck.picture.lib.utils.ToastUtils
 import vn.xdeuhug.base.BaseDialog
 import vn.xdeuhug.base.action.AnimAction
-import vn.xdeuhug.luckyMoney.R
 import vn.xdeuhug.luckyMoney.databinding.DialogLuckyBoxBinding
 
 /**

@@ -69,6 +69,7 @@
     <string name="max_number_99">Số lượng tiền lì xì tối đa là 99</string>
     <string name="not_have_money">Hết tiền lì xì rồi!</string>
     <string name="add_money">Thêm lì xì</string>
+    <string name="spinner_lucky">Vòng quay lì xì</string>
 </resources>
 
 

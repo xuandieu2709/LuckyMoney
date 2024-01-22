@@ -4,7 +4,7 @@
 package vn.xdeuhug.luckyMoney.test;
 
 public final class BuildConfig {
-  public static final boolean DEBUG = Boolean.parseBoolean("true");
+  public static final boolean DEBUG = false;
   public static final String APPLICATION_ID = "vn.xdeuhug.luckyMoney.test";
   public static final String BUILD_TYPE = "debug";
   // Field from default config.
@@ -12,7 +12,7 @@ public final class BuildConfig {
   // Field from default config.
   public static final boolean LOG_ENABLE = true;
   // Field from default config.
-  public static final String PROJECT_ID = "net.xdeuhug.seniorsociable.api";
+  public static final String PROJECT_ID = "net.xdeuhug.luckyMoney.api";
   // Field from default config.
   public static final int PROJECT_ID_APPLICATION = 8095;
   // Field from default config.

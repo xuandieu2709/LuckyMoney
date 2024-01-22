@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.media.MediaPlayer
 import android.view.LayoutInflater
-import com.luck.picture.lib.utils.ToastUtils
+import com.hjq.toast.ToastUtils
 import vn.xdeuhug.base.BaseDialog
 import vn.xdeuhug.base.action.AnimAction
 import vn.xdeuhug.luckyMoney.R
@@ -186,7 +186,7 @@ class SettingMoneyDialog {
                 }
                 moneyAdapter.notifyItemChanged(position)
             } else {
-                ToastUtils.showToast(getContext(), getString(R.string.max_number_99))
+                ToastUtils.show(getString(R.string.max_number_99))
             }
         }
 
@@ -198,7 +198,7 @@ class SettingMoneyDialog {
                 moneyAdapter.notifyItemChanged(position)
             } else {
                 item.number = 99
-                ToastUtils.showToast(getContext(), getString(R.string.max_number_99))
+                ToastUtils.show(getString(R.string.max_number_99))
             }
         }
     }

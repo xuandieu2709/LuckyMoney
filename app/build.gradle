@@ -14,11 +14,24 @@ android {
 
     buildTypes {
         debug {
-            // thêm hậu tố vào tên gói
-            //applicationIdSuffix '.debug'
+//            // thêm hậu tố vào tên gói
+//            //applicationIdSuffix '.debug'
+//            // chế độ gỡ lỗi
+//            debuggable true
+//            jniDebuggable true
+//            // Loại bỏ các tài nguyên vô dụng
+//            shrinkResources false
+//            // xáo trộn mã
+//            minifyEnabled false
+//            // Cấu hình thông tin
+////            signingConfig signingConfigs.config
+//
+//            addManifestPlaceholders(['app_name': 'Lì xì đầu năm'])
+//
+//            proguardFiles 'proguard-sdk.pro', 'proguard-app.pro'
             // chế độ gỡ lỗi
-            debuggable true
-            jniDebuggable true
+            debuggable false
+            jniDebuggable false
             // Loại bỏ các tài nguyên vô dụng
             shrinkResources false
             // xáo trộn mã
@@ -58,10 +71,13 @@ android {
     applicationVariants.configureEach { variant ->
         // apk cấu hình tên tệp đầu ra
         variant.outputs.configureEach { output ->
-            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
-            if (variant.buildType.name == buildTypes.release.getName()) {
-                outputFileName += '_' + new Date().format('MMdd')
-            }
+//            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
+//            if (variant.buildType.name == buildTypes.release.getName()) {
+//                outputFileName += '_' + new Date().format('MMdd')
+//            }
+//            outputFileName += '.apk'
+            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + "release"
+            outputFileName += '_' + new Date().format('MMdd')
             outputFileName += '.apk'
         }
     }
@@ -115,7 +131,7 @@ dependencies {
     // Thư viện cơ sở
     api project(':library:base')
     api project(':library:widget')
-    api project(':library:selector')
+//    api project(':library:selector')
     api project(':library:luckyWheel')
 
     api 'com.github.getActivity:EasyHttp:12.5'

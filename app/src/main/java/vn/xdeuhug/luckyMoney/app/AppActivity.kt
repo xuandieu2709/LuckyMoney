@@ -338,16 +338,6 @@ abstract class AppActivity : BaseActivity(), ToastAction, TitleBarAction, OnHttp
         return super.dispatchTouchEvent(ev)
     }
 
-    fun setChildListener(parent: View, listener: View.OnClickListener) {
-        parent.setOnClickListener(listener)
-        if (parent !is ViewGroup) {
-            return
-        }
-        for (i in 0 until parent.childCount) {
-            setChildListener(parent.getChildAt(i), listener)
-        }
-    }
-
 
     /**
      * Interface definition for a callback to be invoked when a touch event has occurred outside a formerly specified

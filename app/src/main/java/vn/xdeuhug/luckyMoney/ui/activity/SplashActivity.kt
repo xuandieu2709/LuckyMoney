@@ -36,11 +36,7 @@ class SplashActivity : AppActivity() {
     override fun initData() {
         binding.ivSplashDebug.let {
             it.setText(getString(R.string.beta).uppercase(Locale.getDefault()))
-            if (AppConfig.isDebug()) {
-                it.visibility = View.VISIBLE
-            } else {
-                it.visibility = View.INVISIBLE
-            }
+            it.visibility = View.INVISIBLE
         }
         goToHome()
     }

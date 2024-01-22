@@ -5,7 +5,7 @@ ext {
             minSdkVersion    : 24,
             targetSdkVersion : 31,
             versionCode      : 15,
-            versionName      : "1.9.0"
+            versionName      : "1.9.5"
     ]
 
     def SERVER_TYPE_TEST = "test"
@@ -31,7 +31,7 @@ ext {
         serverType = project.properties["ServerType"]
     }
 
-    PROJECT_ID = "net.xdeuhug.seniorsociable.api"
+    PROJECT_ID = "net.xdeuhug.luckyMoney.api"
 
     REQUEST_SUCCESS = 200
     PROJECT_ID_OAUTH = 8888

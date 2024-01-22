@@ -7,6 +7,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dp_4">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:background="@drawable/top_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/great_vibes_regular"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_48"
+        android:paddingHorizontal="@dimen/dp_32"
+        android:paddingVertical="@dimen/dp_16"
+        android:text="@string/spinner_lucky"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp_28"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold" />
 
     <rubikstudio.library.LuckyWheelView
         android:id="@+id/luckyWheel"
@@ -20,7 +37,7 @@
 
     <Button
         android:id="@+id/play"
-        android:layout_marginBottom="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_16"
         android:textSize="@dimen/sp_20"
         android:textColor="@android:color/white"
         android:text="Nhận lì xì"

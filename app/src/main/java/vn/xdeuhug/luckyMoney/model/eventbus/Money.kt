@@ -8,5 +8,4 @@ class Money {
     var name = ""
     var money = 0
     var number = 0
-    var isTextChange = false
 }
